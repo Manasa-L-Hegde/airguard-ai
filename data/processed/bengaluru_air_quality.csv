@@ -1,0 +1,124 @@
+station,city,state,latitude,longitude,last_update,CO,NH3,NO2,OZONE,PM10,PM2.5,SO2
+"32Bungalows, Bhilai - CECB",Bhilai,Chhattisgarh,21.194815,81.31477,2026-07-03 21:00:00,8.0,3.0,7.0,20.0,11.0,,12.0
+"AIIMS, Raipur - CECB",Raipur,Chhattisgarh,21.258815,81.578979,2026-07-03 21:00:00,16.0,4.0,5.0,13.0,16.0,11.0,5.0
+"Alipur, Delhi - DPCC",Delhi,Delhi,28.815329,77.15301,2026-07-03 21:00:00,39.0,,21.0,33.0,105.0,,7.0
+"Ambedkar Nagar, Nellore - APPCB ",Nellore,Andhra Pradesh,14.438164,79.966814,2026-07-03 21:00:00,33.0,6.0,27.0,31.0,74.0,57.0,13.0
+"Anand Kala Kshetram, Rajamahendravaram - APPCB",Rajamahendravaram,Andhra Pradesh,16.9872867,81.7363176,2026-07-03 21:00:00,20.0,1.0,7.0,12.0,31.0,,7.0
+"Anand Vihar, Delhi - DPCC",Delhi,Delhi,28.647622,77.315809,2026-07-03 21:00:00,54.0,7.0,30.0,24.0,130.0,104.0,10.0
+"Ashok Vihar, Delhi - DPCC",Delhi,Delhi,28.695381,77.181665,2026-07-03 21:00:00,56.0,9.0,24.0,13.0,97.0,62.0,12.0
+"Aya Nagar, Delhi - IITM",Delhi,Delhi,28.4706914,77.1099364,2026-07-03 21:00:00,38.0,,34.0,52.0,82.0,69.0,
+"Bata Chowk, Nalbari - PCBA",Nalbari,Assam,26.446912,91.439057,2026-07-03 21:00:00,22.0,,,19.0,,,
+"Bawana, Delhi - DPCC",Delhi,Delhi,28.7762,77.051074,2026-07-03 21:00:00,67.0,7.0,13.0,8.0,,,4.0
+"Bhatagaon New ISBT, Raipur - CECB",Raipur,Chhattisgarh,21.219665,81.630094,2026-07-03 21:00:00,24.0,2.0,2.0,2.0,16.0,5.0,3.0
+"Buddha Colony, Muzaffarpur - BSPCB",Muzaffarpur,Bihar,26.11442,85.39813,2026-07-03 21:00:00,16.0,9.0,18.0,49.0,69.0,53.0,11.0
+"Burari Crossing, Delhi - IITM",Delhi,Delhi,28.7256504,77.2011573,2026-07-03 21:00:00,52.0,,16.0,206.0,89.0,68.0,
+"CRRI Mathura Road, Delhi - IITM",Delhi,Delhi,28.5512005,77.2735737,2026-07-03 21:00:00,71.0,,23.0,24.0,97.0,69.0,
+"Cantonment Area, Delhi - DPCC",Delhi,Delhi,28.594169,77.1251,2026-07-03 21:00:00,46.0,4.0,31.0,66.0,83.0,26.0,5.0
+"Central Academy for SFS, Byrnihat - PCBA",Byrnihat,Assam,26.071318,91.87488,2026-07-03 21:00:00,49.0,4.0,6.0,30.0,79.0,88.0,30.0
+"Chandni Chowk, Delhi - IITM",Delhi,Delhi,28.656756,77.227234,2026-07-03 21:00:00,95.0,6.0,19.0,48.0,99.0,124.0,50.0
+"Charitra Van, Buxar - BSPCB",Buxar,Bihar,25.56752,83.966379,2026-07-03 21:00:00,23.0,3.0,9.0,33.0,47.0,58.0,30.0
+"Christianpatty, Nagaon - PCBA",Nagaon,Assam,26.349082,92.68449,2026-07-03 21:00:00,21.0,4.0,1.0,11.0,56.0,63.0,12.0
+"Civic Center, Bhilai - Bhilai Steel Plant",Bhilai,Chhattisgarh,21.185571,81.343175,2026-07-03 21:00:00,23.0,1.0,16.0,11.0,11.0,5.0,10.0
+"Commonwealth Sports Complex, Delhi - DPCC",Delhi,Delhi,28.615828,77.271992,2026-07-03 21:00:00,72.0,5.0,33.0,70.0,87.0,74.0,13.0
+"D M Colony, Bihar Sharif - BSPCB",Bihar Sharif,Bihar,25.204762,85.51496,2026-07-03 21:00:00,105.0,3.0,10.0,2.0,17.0,22.0,
+"DM Office_Kachari Chowk, Bhagalpur - BSPCB",Bhagalpur,Bihar,25.251013,86.989001,2026-07-03 21:00:00,43.0,1.0,12.0,19.0,82.0,41.0,19.0
+"DM Office_Kasipur, Samastipur - BSPCB",Samastipur,Bihar,25.859655,85.77944,2026-07-03 21:00:00,2.0,1.0,8.0,8.0,49.0,60.0,16.0
+"DRM Office Danapur, Patna - BSPCB",Patna,Bihar,25.586562,85.043586,2026-07-03 21:00:00,30.0,9.0,32.0,15.0,50.0,42.0,6.0
+"DTU, Delhi - CPCB",Delhi,Delhi,28.7500499,77.1112615,2026-07-03 21:00:00,39.0,8.0,32.0,,,86.0,28.0
+"Dangi Tola, Rajgir - BSPCB",Rajgir,Bihar,25.0328,85.41948,2026-07-03 21:00:00,42.0,3.0,14.0,41.0,48.0,51.0,3.0
+"Darshan Nagar, Chhapra - BSPCB",Chhapra,Bihar,25.7808257,84.7446768,2026-07-03 21:00:00,99.0,,,4.0,,,
+"District Court, Eluru - APPCB",Eluru,Andhra Pradesh,16.711754,81.092095,2026-07-03 21:00:00,28.0,5.0,18.0,7.0,66.0,60.0,14.0
+"Dr. Karni Singh Shooting Range, Delhi - DPCC",Delhi,Delhi,28.498571,77.26484,2026-07-03 21:00:00,22.0,5.0,12.0,30.0,81.0,60.0,3.0
+"Dwarka-Sector 8, Delhi - DPCC ",Delhi,Delhi,28.5710274,77.0719006,2026-07-03 21:00:00,54.0,8.0,26.0,29.0,129.0,56.0,20.0
+"Forest Rest House, Manguraha - BSPCB",Manguraha,Bihar,27.308328,84.531742,2026-07-03 21:00:00,33.0,1.0,6.0,31.0,,97.0,16.0
+"GVM Corporation, Visakhapatnam - APPCB",Visakhapatnam,Andhra Pradesh,17.72,83.3,2026-07-03 21:00:00,11.0,3.0,58.0,8.0,79.0,33.0,22.0
+"Gandak Colony, Motihari - BSPCB",Motihari,Bihar,26.63086,84.90051,2026-07-03 21:00:00,13.0,,,55.0,,,
+"Gangineni Cheruvu, Chittoor - APPCB",Chittoor,Andhra Pradesh,13.20488,79.097889,2026-07-03 21:00:00,18.0,8.0,30.0,38.0,64.0,64.0,16.0
+"Girls College, Sivasagar - PCBA",Sivasagar,Assam,26.987634,94.636574,2026-07-03 21:00:00,16.0,9.0,11.0,43.0,24.0,10.0,8.0
+"Govt. High School Shikarpur, Patna - BSPCB",Patna,Bihar,25.592539,85.227158,2026-07-03 21:00:00,47.0,6.0,12.0,76.0,58.0,59.0,10.0
+"Govt. Higher Secondary School, Milupara - CECB",Milupara,Chhattisgarh,22.1910172,83.5197009,2026-07-03 21:00:00,29.0,1.0,,66.0,26.0,,13.0
+"Gulzarpet, Anantapur - APPCB",Anantapur,Andhra Pradesh,14.675886,77.593027,2026-07-03 21:00:00,28.0,4.0,21.0,35.0,80.0,96.0,13.0
+"Gurdeo Nagar, Aurangabad - BSPCB",Aurangabad,Bihar,24.75746,84.366208,2026-07-03 21:00:00,103.0,2.0,8.0,7.0,,,
+"Gyaspur, Ahmedabad - IITM",Ahmedabad,Gujarat,22.977134,72.553024,2026-07-03 21:00:00,,,,,74.0,18.0,
+"HB Colony, Vijayawada - APPCB",Vijayawada,Andhra Pradesh,16.536107,80.594233,2026-07-03 21:00:00,21.0,5.0,24.0,25.0,73.0,68.0,13.0
+"Hathkhoj, Bhilai - CECB",Bhilai,Chhattisgarh,21.224231,81.40835,2026-07-03 21:00:00,21.0,5.0,18.0,11.0,23.0,25.0,12.0
+"IGI Airport (T3), Delhi - IITM",Delhi,Delhi,28.5627763,77.1180053,2026-07-03 21:00:00,16.0,,67.0,153.0,93.0,46.0,
+"IGNOU_Maidan Garhi, Delhi - DPCC",Delhi,Delhi,28.493624,77.201159,2026-07-03 21:00:00,26.0,4.0,11.0,,,33.0,3.0
+"IGSC Planetarium Complex, Patna - BSPCB",Patna,Bihar,25.610369,85.132568,2026-07-03 21:00:00,6.0,,2.0,60.0,,,11.0
+"IHBAS, Dilshad Garden, Delhi - CPCB",Delhi,Delhi,28.6811736,77.3025234,2026-07-03 21:00:00,72.0,,,58.0,89.0,88.0,18.0
+"IIT Delhi, Delhi - IITM",Delhi,Delhi,28.54246,77.191651,2026-07-03 21:00:00,31.0,,11.0,32.0,119.0,70.0,
+"IITG, Guwahati - PCBA",Guwahati,Assam,26.2028636,91.70046436,2026-07-03 21:00:00,7.0,5.0,2.0,6.0,23.0,21.0,41.0
+"IMD Lodhi Road, Delhi - IITM",Delhi,Delhi,28.5918245,77.2273074,2026-07-03 21:00:00,35.0,,11.0,99.0,102.0,75.0,
+"ITO, Delhi - CPCB",Delhi,Delhi,28.628624,77.24106,2026-07-03 21:00:00,76.0,4.0,63.0,20.0,92.0,84.0,15.0
+"Industrial Area, Hajipur - BSPCB",Hajipur,Bihar,25.697189,85.2459,2026-07-03 21:00:00,40.0,14.0,9.0,58.0,43.0,48.0,6.0
+"JNU, Delhi - DPCC",Delhi,Delhi,28.540721,77.168544,2026-07-03 21:00:00,37.0,2.0,18.0,,,72.0,
+"Jahangirpuri, Delhi - DPCC",Delhi,Delhi,28.73282,77.170633,2026-07-03 21:00:00,64.0,6.0,32.0,13.0,106.0,109.0,3.0
+"Jawaharlal Nehru Stadium, Delhi - DPCC",Delhi,Delhi,28.58028,77.233829,2026-07-03 21:00:00,50.0,16.0,42.0,34.0,98.0,73.0,9.0
+"Kamalnath Nagar, Bettiah - BSPCB",Bettiah,Bihar,26.80365,84.51954,2026-07-03 21:00:00,36.0,,,23.0,,,10.0
+"Kanuru, Vijayawada - APPCB",Vijayawada,Andhra Pradesh,16.486692,80.699436,2026-07-03 21:00:00,29.0,5.0,29.0,34.0,,,17.0
+"Kareemganj, Gaya - BSPCB",Gaya,Bihar,24.792403,84.992416,2026-07-03 21:00:00,29.0,1.0,12.0,41.0,60.0,36.0,44.0
+"Kharahiya Basti, Araria - BSPCB",Araria,Bihar,26.146529,87.454184,2026-07-03 21:00:00,7.0,5.0,14.0,11.0,59.0,56.0,50.0
+"Krishak Nagar, Raipur - CECB",Raipur,Chhattisgarh,21.237755,81.705301,2026-07-03 21:00:00,16.0,2.0,,14.0,13.0,10.0,4.0
+"LGBI Airport, Guwahati - PCBA",Guwahati,Assam,26.10887,91.589544,2026-07-03 21:00:00,26.0,7.0,22.0,37.0,45.0,57.0,12.0
+"Lohiyanagar, Begusarai - BSPCB",Begusarai,Bihar,25.42742023,86.13886079,2026-07-03 21:00:00,10.0,,,22.0,,,
+"MIT-Daudpur Kothi, Muzaffarpur - BSPCB",Muzaffarpur,Bihar,26.1403345,85.3650192,2026-07-03 21:00:00,110.0,,,53.0,59.0,51.0,11.0
+"Major Dhyan Chand National Stadium, Delhi - DPCC",Delhi,Delhi,28.611281,77.237738,2026-07-03 21:00:00,36.0,9.0,37.0,2.0,74.0,44.0,8.0
+"Mandir Marg, Delhi - DPCC",Delhi,Delhi,28.636429,77.201067,2026-07-03 21:00:00,68.0,,,34.0,,,
+"Mangala, Bilaspur - NTPC",Bilaspur,Chhattisgarh,22.08815,82.13737,2026-07-03 21:00:00,32.0,,,,20.0,23.0,10.0
+"Maninagar, Ahmedabad - GPCB",Ahmedabad,Gujarat,23.002657,72.591912,2026-07-03 21:00:00,50.0,,,,88.0,66.0,41.0
+"Mariam Nagar, Purnia - BSPCB",Purnia,Bihar,25.366336,87.117468,2026-07-03 21:00:00,57.0,2.0,6.0,27.0,49.0,62.0,17.0
+"Mayaganj, Bhagalpur - BSPCB",Bhagalpur,Bihar,25.265194,87.012947,2026-07-03 21:00:00,9.0,1.0,8.0,17.0,49.0,,10.0
+"Mirchaibari, Katihar - BSPCB",Katihar,Bihar,25.560083,87.553265,2026-07-03 21:00:00,101.0,1.0,2.0,18.0,8.0,8.0,25.0
+"Mundka, Delhi - DPCC",Delhi,Delhi,28.684678,77.076574,2026-07-03 21:00:00,55.0,10.0,90.0,17.0,,72.0,7.0
+"Muzaffarpur Collectorate, Muzaffarpur - BSPCB",Muzaffarpur,Bihar,26.1209,85.3647,2026-07-03 21:00:00,42.0,,19.0,55.0,,62.0,6.0
+"NSIT Dwarka, Delhi - CPCB",Delhi,Delhi,28.60909,77.0325413,2026-07-03 21:00:00,61.0,4.0,46.0,25.0,71.0,98.0,15.0
+"NSUT Jaffarpur, Delhi - DPCC",Delhi,Delhi,28.594004,76.909423,2026-07-03 21:00:00,37.0,3.0,22.0,75.0,85.0,94.0,3.0
+"Naharlagun, Naharlagun - APSPCB",Naharlagun,Arunachal Pradesh,27.103358,93.679645,2026-07-03 21:00:00,8.0,,,7.0,,,
+"Najafgarh, Delhi - DPCC",Delhi,Delhi,28.570173,76.933762,2026-07-03 21:00:00,17.0,7.0,30.0,16.0,72.0,90.0,10.0
+"Narela, Delhi - DPCC",Delhi,Delhi,28.822836,77.101981,2026-07-03 21:00:00,47.0,10.0,,10.0,115.0,71.0,11.0
+"Nawapara SECL Colony, Chhal - CECB",Chhal,Chhattisgarh,22.118125,83.140608,2026-07-03 21:00:00,20.0,,,30.0,,,
+"Nehru Nagar, Delhi - DPCC",Delhi,Delhi,28.56789,77.250515,2026-07-03 21:00:00,37.0,11.0,40.0,23.0,111.0,72.0,17.0
+"New DM Office, Arrah - BSPCB",Arrah,Bihar,25.5626095,84.663264,2026-07-03 21:00:00,55.0,2.0,7.0,9.0,53.0,49.0,5.0
+"North Campus, DU, Delhi - IITM",Delhi,Delhi,28.6573814,77.1585447,2026-07-03 21:00:00,53.0,,33.0,53.0,92.0,72.0,
+"OP Jindal Industrial Park, Tumidih - CECB",Tumidih,Chhattisgarh,22.06631475,83.33820077,2026-07-03 21:00:00,27.0,2.0,34.0,27.0,,,5.0
+"OP Jindal School, Kunjemura - CECB",Kunjemura,Chhattisgarh,22.12665,83.483212,2026-07-03 21:00:00,31.0,2.0,15.0,10.0,23.0,9.0,14.0
+"Okhla Phase-2, Delhi - DPCC",Delhi,Delhi,28.530785,77.271255,2026-07-03 21:00:00,35.0,7.0,20.0,29.0,93.0,70.0,9.0
+"Pan Bazaar, Guwahati - PCBA",Guwahati,Assam,26.1875,91.744194,2026-07-03 21:00:00,30.0,1.0,0.0,15.0,,,32.0
+"Patparganj, Delhi - DPCC",Delhi,Delhi,28.623763,77.287209,2026-07-03 21:00:00,46.0,7.0,16.0,52.0,99.0,71.0,5.0
+"Police Line, Saharsa - BSPCB",Saharsa,Bihar,25.892357,86.590325,2026-07-03 21:00:00,42.0,,,26.0,,,
+"Punjabi Bagh, Delhi - DPCC",Delhi,Delhi,28.674045,77.131023,2026-07-03 21:00:00,37.0,4.0,26.0,48.0,112.0,79.0,42.0
+"Pusa, Delhi - DPCC",Delhi,Delhi,28.639652,77.146275,2026-07-03 21:00:00,83.0,10.0,52.0,35.0,101.0,74.0,9.0
+"Pusa, Delhi - IITM",Delhi,Delhi,28.63611,77.173332,2026-07-03 21:00:00,37.0,,19.0,178.0,84.0,59.0,
+"R K Puram, Delhi - DPCC",Delhi,Delhi,28.563262,77.186937,2026-07-03 21:00:00,31.0,6.0,33.0,26.0,97.0,123.0,33.0
+"Raikhad, Ahmedabad - IITM",Ahmedabad,Gujarat,23.020509,72.579261,2026-07-03 21:00:00,,1.0,5.0,1.0,73.0,42.0,
+"Railway Colony, Guwahati - PCBA",Guwahati,Assam,26.181742,91.78063,2026-07-03 21:00:00,14.0,1.0,3.0,28.0,39.0,49.0,44.0
+"Rajbansi Nagar, Patna - BSPCB",Patna,Bihar,25.599486,85.113666,2026-07-03 21:00:00,37.0,3.0,31.0,32.0,33.0,24.0,8.0
+"Rajendra Nagar North, Guntur - APPCB",Guntur,Andhra Pradesh,16.316553,80.413302,2026-07-03 21:00:00,42.0,6.0,30.0,55.0,67.0,65.0,14.0
+"Rajiv Gandhi Park, Vijayawada - APPCB",Vijayawada,Andhra Pradesh,16.509717,80.612222,2026-07-03 21:00:00,36.0,4.0,25.0,39.0,78.0,75.0,13.0
+"Rajiv Nagar, Vijayawada - APPCB",Vijayawada,Andhra Pradesh,16.554731,80.64911,2026-07-03 21:00:00,22.0,4.0,27.0,28.0,73.0,66.0,14.0
+"Rampur, Korba - CECB",Korba,Chhattisgarh,22.368195,82.746431,2026-07-03 21:00:00,13.0,1.0,9.0,8.0,42.0,1.0,5.0
+"Rohini, Delhi - DPCC",Delhi,Delhi,28.732528,77.11992,2026-07-03 21:00:00,61.0,7.0,30.0,21.0,111.0,86.0,9.0
+"SAC ISRO Bopal, Ahmedabad - IITM",Ahmedabad,Gujarat,23.041137,72.456691,2026-07-03 21:00:00,9.0,,,12.0,48.0,41.0,1.0
+"SDM Office_Khagra, Kishanganj - BSPCB",Kishanganj,Bihar,26.0881305,87.93840336,2026-07-03 21:00:00,14.0,3.0,7.0,34.0,68.0,68.0,8.0
+"SFTI Kusdihra, Gaya - BSPCB",Gaya,Bihar,24.762518,84.982348,2026-07-03 21:00:00,20.0,6.0,22.0,27.0,41.0,37.0,10.0
+"Samanpura, Patna - BSPCB",Patna,Bihar,25.596727,85.085624,2026-07-03 21:00:00,20.0,9.0,18.0,51.0,102.0,91.0,4.0
+"Secretariat, Amaravati - APPCB",Amaravati,Andhra Pradesh,16.5150833,80.5181667,2026-07-03 21:00:00,10.0,3.0,18.0,33.0,46.0,24.0,16.0
+"Sector 22, Chandigarh - CPCC",Chandigarh,Chandigarh,30.735567,76.775714,2026-07-03 21:00:00,63.0,11.0,11.0,19.0,31.0,24.0,5.0
+"Sector-25, Chandigarh - CPCC",Chandigarh,Chandigarh,30.751462,76.762879,2026-07-03 21:00:00,21.0,14.0,13.0,33.0,36.0,39.0,6.0
+"Sector-53, Chandigarh - CPCC",Chandigarh,Chandigarh,30.719859,76.738637,2026-07-03 21:00:00,47.0,18.0,36.0,33.0,19.0,18.0,3.0
+"Shadipur, Delhi - CPCB",Delhi,Delhi,28.6514781,77.1473105,2026-07-03 21:00:00,52.0,9.0,40.0,27.0,86.0,86.0,8.0
+"Siltara Phase-II, Raipur - CECB",Raipur,Chhattisgarh,21.371751,81.664929,2026-07-03 21:00:00,17.0,2.0,6.0,7.0,72.0,51.0,13.0
+"Sirifort, Delhi - CPCB",Delhi,Delhi,28.5504249,77.2159377,2026-07-03 21:00:00,24.0,14.0,,20.0,99.0,91.0,25.0
+"Sita Rama Nagar, Kurnool - APPCB",Kurnool,Andhra Pradesh,15.83411,78.028546,2026-07-03 21:00:00,12.0,,,16.0,,,
+"Sonia Vihar, Delhi - DPCC",Delhi,Delhi,28.710508,77.249485,2026-07-03 21:00:00,49.0,18.0,29.0,17.0,108.0,103.0,7.0
+"Sri Aurobindo Marg, Delhi - DPCC",Delhi,Delhi,28.531346,77.190156,2026-07-03 21:00:00,46.0,10.0,32.0,19.0,80.0,82.0,8.0
+"Srinivas Nagar Colony, Machilipatnam - APPCB",Machilipatnam,Andhra Pradesh,16.186555,81.13219,2026-07-03 21:00:00,28.0,3.0,23.0,32.0,63.0,63.0,17.0
+"Talkatora Garden, Delhi - DPCC",Delhi,Delhi,28.62181,77.1944633,2026-07-03 21:00:00,49.0,4.0,18.0,77.0,,,3.0
+"Tarapur, Silchar - PCBA",Silchar,Assam,24.82827,92.79525,2026-07-03 21:00:00,44.0,1.0,18.0,5.0,45.0,32.0,6.0
+"Toll Gate, Tirumala - APPCB",Tirumala,Andhra Pradesh,13.67,79.35,2026-07-03 21:00:00,17.0,3.0,57.0,17.0,32.0,20.0,7.0
+"Town Hall, Munger - BSPCB",Munger,Bihar,25.376776,86.471523,2026-07-03 21:00:00,46.0,3.0,5.0,2.0,38.0,47.0,30.0
+"Urja Nagar, Korba - CECB",Korba,Chhattisgarh,22.348441,82.549611,2026-07-03 21:00:00,50.0,1.0,8.0,2.0,12.0,8.0,12.0
+"Vaikuntapuram, Tirupati - APPCB",Tirupati,Andhra Pradesh,13.615387,79.40923,2026-07-03 21:00:00,27.0,6.0,32.0,46.0,70.0,50.0,15.0
+"Vivek Vihar, Delhi - DPCC",Delhi,Delhi,28.672342,77.31526,2026-07-03 21:00:00,40.0,7.0,35.0,29.0,99.0,63.0,10.0
+"Wazirpur, Delhi - DPCC",Delhi,Delhi,28.699793,77.165453,2026-07-03 21:00:00,74.0,10.0,37.0,20.0,127.0,78.0,10.0
+"Yerramukkapalli, Kadapa - APPCB",Kadapa,Andhra Pradesh,14.465052,78.824187,2026-07-03 21:00:00,22.0,20.0,31.0,46.0,78.0,82.0,12.0

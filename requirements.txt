@@ -1,0 +1,41 @@
+# AirGuard AI — requirements.txt
+# Tested on Python 3.11 / 3.12 (recommended).
+# Python 3.14 works with the shims in app.py (audioop / distutils removed).
+#
+# Install:
+#   pip install -r requirements.txt
+#
+# Run:
+#   python app.py
+#
+# Then open http://localhost:7860
+
+gradio==3.50.2
+gradio-client==0.6.1
+
+# Data & ML
+pandas==3.0.1
+numpy==2.4.3
+scikit-learn==1.8.0
+joblib==1.5.3
+
+# Visualisation
+folium==0.20.0
+matplotlib==3.10.8
+
+# Gradio runtime dependencies (pin to avoid resolver conflicts)
+fastapi>=0.100.0
+uvicorn>=0.20.0
+aiofiles>=22.1.0
+httpx>=0.24.0
+orjson>=3.9.0
+pydantic>=2.0.0
+python-multipart>=0.0.6
+websockets>=10.0,<12.0
+semantic-version>=2.10.0
+ffmpy>=0.3.0
+pydub>=0.25.1
+requests>=2.28.0
+huggingface-hub>=0.13.0
+google-genai>=0.2.0
+plotly>=5.14.0

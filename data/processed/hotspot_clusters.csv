@@ -1,0 +1,3 @@
+cluster_id,wards,center_latitude,center_longitude,avg_severity,avg_pm25,avg_pm10,station_count,stations
+1,"Subhash Nagar, Basaveshwara Nagar, Nelagadderanahalli",12.992678,77.539675,81.1333,81.1333,,3,"City Railway Station, Bengaluru - KSPCB; Sanegurava Halli, Bengaluru - KSPCB; Shivapura Peenya, Bengaluru - KSPCB"
+0,"Sarakki, Shakambari Nagar, Jakkasandra",12.91732,77.600893,76.9633,76.9633,,3,"BTM Layout, Bengaluru - CPCB; Jayanagar 5th Block, Bengaluru - KSPCB; Silk Board, Bengaluru - KSPCB"
