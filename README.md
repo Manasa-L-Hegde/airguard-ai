@@ -3,6 +3,9 @@
 > 
 > *Tagline: "Predict Pollution Before It Happens"*
 
+[![Live Demo](https://img.shields.io/badge/%E2%9A%A1-Live%20Demo-brightgreen?style=for-the-badge)](https://huggingface.co/spaces/manasahegde/airguard.ai)
+[![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Space-blue?style=for-the-badge)](https://huggingface.co/spaces/manasahegde/airguard.ai)
+
 ---
 
 ## 📌 1. Problem Statement
