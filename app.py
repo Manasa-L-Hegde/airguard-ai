@@ -177,7 +177,8 @@ DYNAMIC_TRANSLATIONS = {
         "active": "Active",
         "unknown": "Unknown",
         "not_found": "Station not found.",
-        "no_data": "No data available."
+        "no_data": "No data available.",
+        "est_label": "(Estimated)"
     },
     "ಕನ್ನಡ": {
         "forecast": "ಮುನ್ಸೂಚನೆ",
@@ -211,7 +212,8 @@ DYNAMIC_TRANSLATIONS = {
         "active": "ಸಕ್ರಿಯ",
         "unknown": "ತಿಳಿದಿಲ್ಲ",
         "not_found": "ನಿಲ್ದಾಣ ಕಂಡುಬಂದಿಲ್ಲ.",
-        "no_data": "ಡೇಟಾ ಲಭ್ಯವಿಲ್ಲ."
+        "no_data": "ಡೇಟಾ ಲಭ್ಯವಿಲ್ಲ.",
+        "est_label": "(ಅಂದಾಜು)"
     },
     "हिंदी": {
         "forecast": "पूर्वानुमान",
@@ -245,7 +247,8 @@ DYNAMIC_TRANSLATIONS = {
         "active": "सक्रिय",
         "unknown": "अज्ञात",
         "not_found": "स्टेशन नहीं मिला।",
-        "no_data": "डेटा उपलब्ध नहीं है।"
+        "no_data": "डेटा उपलब्ध नहीं है।",
+        "est_label": "(अनुमानित)"
     }
 }
 
