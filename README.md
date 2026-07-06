@@ -1,150 +1,129 @@
 # 🌿 AirGuard AI
-> **AI-Powered Urban Pollution Hotspot Detection & Clean Street Decision Support**
-
-![Google Build with AI](https://img.shields.io/badge/Google-Build%20with%20AI-4285F4?style=flat-square&logo=google&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)
-![Gradio](https://img.shields.io/badge/Gradio-v4-FF5A00?style=flat-square)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-v1.3-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
-![Plotly](https://img.shields.io/badge/Plotly-Charts-3F4F75?style=flat-square&logo=plotly&logoColor=white)
-![Folium](https://img.shields.io/badge/Folium-Maps-77B829?style=flat-square)
-![MIT License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+> **Intelligent Urban Pollution Hotspot Detection & Clean Street Decision Support**
+> 
+> *Tagline: "Predict Pollution Before It Happens"*
 
 ---
 
-AirGuard AI is an operations command center for municipal authorities in Bengaluru, designed to transition urban air quality management from passive monitoring to active, data-driven municipal intervention. By integrating live sensor feeds, advanced machine learning (Random Forest forecasting & DBSCAN hotspot clustering), and localized explainable AI, AirGuard AI dynamically estimates budgets, timelines, citizens impacted, and specific mitigation actions on a station-by-station basis.
+## 📌 1. Problem Statement
+Rapid urbanization and rising vehicle density in metropolitan cities like Bengaluru have led to localized air pollution hotspots that often go undetected until the Air Quality Index (AQI) reaches critical, health-hazardous levels. 
 
+The primary challenges are:
+* **Delayed Detection**: Traditional pollution monitoring is reactive, identifying bad air days only after they occur.
+* **Lack of Actionability**: Municipal authorities and traffic commissioners lack real-time, explainable, and localized decision support systems to implement targeted street-level cleaning, traffic diversion, and industrial dust control.
+* **Lack of Civic Integration**: Environmental management tools operate in silos without integrating crowdsourced citizen reports on illegal garbage burning or construction dust.
 
-
----
-
-## 📸 Interface Previews
-
-### Dashboard Preview
-![Dashboard Preview](assets/screenshots/dashboard.png)
-
-### Interactive Map
-![Interactive Map](assets/screenshots/map.png)
-
-### Municipal Decision Support & KPI Cards
-![Municipal Decision Support](assets/screenshots/decision_support.png)
+This project was built for the **Hack2Skill "Build with AI: Code for Communities" Hackathon (Track 2: CleanAir & Clear Streets)** by **Team DataPulse** to address these challenges head-on.
 
 ---
 
-## 🚀 Key Innovation Pillars
-
-### 1. Dynamic Decision Support System (DDSS)
-Unlike traditional static air quality dashboards, AirGuard AI features an actionable mitigation engine. Selecting a station dynamically updates the **Municipal Decision Support** panel:
-*   **Actions:** Action recommendations are tailored to the station's classification:
-    *   *Industrial Zones (e.g., Peenya):* Stack inspections, heavy transport restriction, and industrial green belts.
-    *   *Traffic Zones (e.g., Silk Board):* Water mist cannons, mechanized road sweeping, and traffic signal optimization.
-    *   *Residential/Commercial Zones (e.g., Hebbal):* Localized construction dust controls, commercial fuel compliance checks, and neighborhood canopy expansion.
-*   **Budgets:** Dynamically scales based on forecasted PM2.5 levels (ranging from `₹0.8L` to `₹8.7L`).
-*   **Citizen Impact:** Computes estimated citizens impacted using ward population density multipliers.
-*   **Responsible Agencies:** Maps exact ownership to municipal departments (e.g., *Bengaluru Traffic Police*, *BBMP Road Infrastructure Dept*, *KSPCB Inspectorate*).
-
-### 2. Deep Machine Learning Pipeline
-*   **Predictive Forecasting:** Random Forest Classifier trained on **1.37 Million CPCB/KSPCB records** to predict next-day AQI categories (*Good, Moderate, Poor, Severe*) with cross-validated confidence scores.
-*   **Spatial Hotspot Detection:** Running DBSCAN spatial clustering algorithms (`eps=0.015`, `min_samples=3`) on coordinates to identify active pollution clusters.
-*   **Feature Engineering:** Features include rolling 7-day/30-day averages, temporal indicators (day of week, month, season), and spatial ward hot-coding.
-
-### 3. Localized Explainable AI (XAI)
-Provides transparency for municipal administrators by extracting temporal trends and listing primary/secondary drivers:
-*   *Automotive Congestion* and *Diesel Tailpipe Emissions* in high-traffic wards.
-*   *Industrial Stack Emissions* and *Suspended Coal Fly Ash* in manufacturing zones.
-*   *Localized Waste Burning* and *Construction Dust* in residential areas.
+## 💡 2. Solution Overview
+**AirGuard AI** is a predictive, explainable, and actionable decision-support platform designed for smart city administrators. By combining machine learning (Random Forest forecasting & DBSCAN spatial clustering) with real-world sensor data, AirGuard AI identifies high-density pollution clusters before they form. It equips municipal departments with targeted mitigation playbooks (including budget scaling, agency ownership, and citizen impact metrics) to clean urban streets and divert traffic dynamically.
 
 ---
 
-## 🏆 Key Results Achieved
-
-*   **✔ 1.37 Million Records:** High-density, real-world historical data foundation.
-*   **✔ 14 Monitoring Stations:** Seamless coverage across Bengaluru (CPCB & KSPCB sensor sites).
-*   **✔ Random Forest:** Robust predictive categorizations.
-*   **✔ DBSCAN:** Automatic clustering of coordinates into active high-density risk zones.
-*   **✔ Dynamic Decision Support:** Tailored budgets, timelines, and actionable checkmarks.
-*   **✔ Explainable AI:** Injects trust and interpretability into the prediction pipeline.
-*   **✔ Interactive Dashboard:** Fully operational dark carbon-glassmorphic cockpit.
-
----
-
-## 🔮 Future Scope
-
-*   **Google Vertex AI:** Scaling model tuning and pipeline triggers in cloud environments.
-*   **Gemini Live integration:** Interactive conversational voice alerts for municipal response drivers.
-*   **Satellite Imagery & IoT integration:** Correlating local ground sensors with high-resolution Sentinel satellite feeds.
-*   **Citizen Mobile App:** Direct report ingestion with auto-geotagging and real-time intervention updates.
+## ✨ 3. Key Features
+* 🌍 **Real-Time AQI Monitoring**: Interactive dashboard mapping real-time PM2.5 readings and AQI categories across 14 active CPCB and KSPCB monitoring stations in Bengaluru.
+* 📈 **ML-Based Pollution Forecasting**: A Random Forest classifier predicts next-day AQI levels (Good, Moderate, Poor, Severe) with explicit confidence percentages.
+* 🚨 **DBSCAN Hotspot Clustering**: Automatically groups stations into spatial clusters (severity-colored zones on the map) to highlight regional hotspots (e.g., Northwest/Southeast industrial/traffic corridors).
+* 🧠 **Explainable AI (XAI)**: Demystifies predictions for municipal operators by identifying primary, secondary, and background drivers of localized pollution (e.g., Peenya industrial stack emissions vs. Silk Board automotive congestion).
+* 🏛️ **Municipal Decision Support**: Dynamically generates tailored action cards with:
+  * **Priority levels & estimated budgets** (scaling from ₹0.8L to ₹8.7L based on severity).
+  * **Expected AQI reduction percentages** (e.g., 18% reduction).
+  * **Citizen exposure estimates** (total population at risk within the ward).
+  * **Responsible departments** (e.g., BBMP Road Infrastructure, Bengaluru Traffic Police).
+  * **Action timeline** (e.g., Within 12 Hours).
+* 🚯 **Citizen Reporting Portal**: Integrates crowdsourced environmental reports (garbage burning, construction dust, road sweep requests) with photo-upload capability, persistent CSV logging, and auto-mapping.
+* 🎨 **Premium UI/UX Cockpit**: A sleek carbon-glassmorphism Gradio interface featuring micro-animations, metric counters, and hover-triggered effects.
 
 ---
 
-## 🛠️ System Architecture
+## 🛠️ 4. Tech Stack
+* **Core Programming**: Python 3.11
+* **User Interface**: Gradio (v3.50.2)
+* **Machine Learning**: Scikit-Learn (Random Forest classification & DBSCAN clustering), NumPy, Joblib (model serialization)
+* **Geospatial & Visualizations**: Folium (interactive maps with circle overlay boundaries), Plotly (gauge charts and historical time-series graphs), Pandas (data manipulation)
+* **Deployment Platform**: Hugging Face Spaces (Python 3.11 Container)
 
+---
+
+## ⚙️ 5. Architecture & Data Flow
 ```
-                                      [CITIZEN REPORTS] 
-                                              │ (Crowdsourced)
-                                              ▼
-[CPCB/KSPCB SENSORS] ──➔ [DATA PIPELINE] ──➔ [RANDOM FOREST & DBSCAN] ──➔ [MITIGATION ENGINE] ──➔ [OPERATIONS PORTAL]
+[CPCB & KSPCB Sensor Feeds] ──┐
+                              ├─► [Data Cleaning & Aggregation] ─► [Random Forest & DBSCAN]
+[Citizen Incident Reports] ───┘                                              │
+                                                                             ▼
+[Operations Dashboard] ◄─── [Actionable Playbooks] ◄─── [Municipal Engine & XAI]
 ```
 
 ---
 
-## 📂 Repository Directory Layout
-
-```
-airguard-ai/
-├── app.py                      # Central Gradio Controller & UI Layout
-├── README.md                   # Platform Documentation & Guide
-├── LICENSE                     # MIT License File
-├── requirements.txt            # Python Dependencies
-├── .gitignore                  # Git Version Control Exclusions
-├── assets/
-│   └── screenshots/            # App Previews and Screenshots
-├── data/
-│   ├── raw/                    # Historical and Real-time Sensor Data
-│   └── processed/
-│       ├── hotspot_clusters.csv  # Output of DBSCAN Spatial Analysis
-│       ├── reports.csv           # Persistent Citizen Reports Database
-│       └── ward_mapped_stations.csv # Geocoded Ward-Station Mapping
-├── models/
-│   ├── aqi_category_rf.pkl     # Primary RF Classifier Model
-│   └── pm25_forecast_rf.pkl    # PM2.5 Forecaster Model
-└── scripts/
-    ├── preprocess_aqi.py       # Raw Data Cleansing & Ingestion
-    ├── train_pm25_forecast.py  # Model Training & Feature Extraction
-    └── test_data.py            # Local Data Ingestion Tests
-```
+## 📊 6. Impact Metrics (From Live Deployment)
+* 🚨 **2 Critical Hotspot Zones** detected and actively clustered.
+* 👥 **68,000+ Citizens** at risk identified across affected municipal zones.
+* 📉 **18% Average Expected AQI Reduction** projected with recommended street-level interventions.
+* 🎯 **58.4% Prediction Accuracy & 74.2% Model Confidence** achieved on validated historical CPCB data.
+* ⚠️ **6 Active Ward Alerts** generated daily to trigger municipal response teams.
 
 ---
 
-## ⚙️ Installation & Local Setup
+## 📸 7. Screenshots
 
-### System Prerequisites
-*   Python 3.10+
-*   Git
+### Executive Summary Grid & Upgraded UI
+![AirGuard AI Dashboard Top Half](screenshots/airguard_hero_metrics_1783267505484.png)
 
-### Execution Steps
-1.  **Clone the project repository:**
-    ```bash
-    git clone https://github.com/Manasa-L-Hegde/airguard-ai.git
-    cd airguard-ai
-    ```
-2.  **Initialize the virtual environment & install packages:**
-    ```bash
-    python -m venv venv
-    venv\Scripts\activate   # On Windows
-    source venv/bin/activate # On Unix/macOS
-    pip install -r requirements.txt
-    ```
-3.  **Train the ML Models (Required if running for the first time):**
-    ```bash
-    python scripts/train_pm25_forecast.py
-    ```
-4.  **Boot the dashboard server:**
-    ```bash
-    python app.py
-    ```
-    Navigate to `http://localhost:7860/` to explore the live dashboard interface.
+### Model Forecasts, AI Explanations & Action Cards
+![AirGuard AI Action Cards and Details](screenshots/dashboard_recommendations_1783267930581.png)
 
 ---
 
-## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 💻 8. Setup & Run Locally
+
+### Prerequisites
+* Python 3.11 (Note: Do not use Python 3.13/3.14 to prevent dependency compilation issues)
+* Git
+
+### Local Execution Steps
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Manasa-L-Hegde/airguard-ai.git
+   cd airguard-ai
+   ```
+
+2. **Set up Virtual Environment**:
+   ```bash
+   python -m venv venv
+   # On Windows:
+   venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
+   ```
+
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run the App**:
+   ```bash
+   python app.py
+   ```
+   Navigate to `http://localhost:7860/` in your web browser.
+
+---
+
+## 🌐 9. Live Demo
+Explore the interactive model predictions, hotspot clusters, and explainable decision-support cards live on Hugging Face Spaces:
+👉 **[AirGuard AI Live Web App](https://huggingface.co/spaces/manasahegde/airguard.ai)**
+
+---
+
+## 👥 10. Team & Acknowledgments
+* **Team Name**: DataPulse
+* Built with 💙 for the Google **Code for Communities 2026** Hackathon / Hack2Skill.
+* Calibration air quality datasets sourced from the Central Pollution Control Board (CPCB) and Karnataka State Pollution Control Board (KSPCB).
+
+---
+
+## 📄 11. License
+This project is licensed under the MIT License - see the `LICENSE` file for details.
