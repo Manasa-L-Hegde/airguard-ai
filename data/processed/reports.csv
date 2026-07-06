@@ -7,3 +7,5 @@ ARG-2026-AB846,2026-07-06 14:11:42,Silk Board,Garbage Burning,test.png,Industria
 ARG-2026-75F7E,2026-07-06 14:43:36,"BTM Layout, Bengaluru - CPCB",Clean / Normal Air,test_clear_sky.jpg,Clean / Normal Air,97.0%,5 / 100,"12.9716, 77.5946",Verified
 ARG-2026-13D03,2026-07-06 14:43:37,"Silk Board, Bengaluru - KSPCB",Garbage Burning,test_dense_smoke.jpg,Garbage Burning,91.7%,95 / 100,"12.9716, 77.5946",Verified
 ARG-2026-71073,2026-07-06 14:43:37,"Peenya, Bengaluru - KSPCB",Construction Dust,test_dusty_construction.jpg,Construction Dust,87.9%,71 / 100,"12.9716, 77.5946",Verified
+ARG-2026-96A5A,2026-07-06 14:59:34,"Silk Board, Bengaluru - KSPCB",Clean / Normal Air,test_clear.jpg,Clean / Normal Air,97.0%,5 / 100,"12.9716, 77.5946",Verified
+ARG-2026-12EEA,2026-07-06 14:59:35,"Peenya, Bengaluru - KSPCB",Garbage Burning,test_smoke.jpg,Garbage Burning,91.7%,95 / 100,"12.9716, 77.5946",Verified

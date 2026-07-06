@@ -464,6 +464,7 @@ def handle_station_analysis(station_name, lang="English"):
 
         trend_fig = plot_trend(station_name)
         gauge_fig = plot_gauge(latest_pm25)
+        latest_aqi_cat = pm25_to_aqi(latest_pm25)
 
         HEALTH_ADVISORIES = {
             "Good": {
