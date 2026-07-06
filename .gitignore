@@ -3,9 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Large files exceeding GitHub 100MB limits
-models/*.pkl
+# Git action logs & local raw data
+git_log_action.txt
 data/processed/bengaluru_air_quality_timeseries.csv
+data/processed/bengaluru_historical_master.csv
 data/raw/
 
 # C extensions
