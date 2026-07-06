@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="1000" height="520">
+  <defs>
+    <linearGradient id="archBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(56, 189, 248, 0.15)"/>
+      <stop offset="100%" stop-color="rgba(15, 23, 42, 0.8)"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(129, 140, 248, 0.15)"/>
+      <stop offset="100%" stop-color="rgba(15, 23, 42, 0.8)"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(34, 197, 94, 0.15)"/>
+      <stop offset="100%" stop-color="rgba(15, 23, 42, 0.8)"/>
+    </linearGradient>
+
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#4ade80"/>
+    </linearGradient>
+
+    <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1000" height="520" fill="url(#archBg)" rx="16" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1.5"/>
+
+  <!-- Title Header -->
+  <text x="500" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="url(#accentGrad)" text-anchor="middle" letter-spacing="1">
+    AIRGUARD AI — END-TO-END MULTIMODAL SYSTEM ARCHITECTURE
+  </text>
+
+  <!-- Section Labels -->
+  <text x="170" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#94a3b8" text-anchor="middle" letter-spacing="1">
+    1. INGESTION MODALITIES
+  </text>
+
+  <text x="500" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#94a3b8" text-anchor="middle" letter-spacing="1">
+    2. MULTIMODAL FUSION &amp; AI ENGINES
+  </text>
+
+  <text x="830" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#94a3b8" text-anchor="middle" letter-spacing="1">
+    3. MUNICIPAL DECISION SUPPORT
+  </text>
+
+  <!-- INPUT MODALITY CARDS (LEFT) -->
+
+  <!-- Card 1: Citizen Mobile Photos -->
+  <g transform="translate(40, 110)">
+    <rect width="260" height="100" rx="12" fill="url(#cardGrad1)" stroke="#38bdf8" stroke-width="1.5" filter="url(#boxShadow)"/>
+    <text x="20" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#38bdf8">
+      📸 Citizen Photo Upload
+    </text>
+    <text x="20" y="55" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">
+      • Computer Vision Engine
+    </text>
+    <text x="20" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      Smoke &amp; Dust Plume Analysis
+    </text>
+  </g>
+
+  <!-- Card 2: Ground Sensor Telemetry -->
+  <g transform="translate(40, 230)">
+    <rect width="260" height="100" rx="12" fill="url(#cardGrad1)" stroke="#38bdf8" stroke-width="1.5" filter="url(#boxShadow)"/>
+    <text x="20" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#38bdf8">
+      📡 Ground Sensor Feeds
+    </text>
+    <text x="20" y="55" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">
+      • CPCB / KSPCB Station Stream
+    </text>
+    <text x="20" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      PM2.5 / PM10 Telemetry Metrics
+    </text>
+  </g>
+
+  <!-- Card 3: Satellite Remote Sensing -->
+  <g transform="translate(40, 350)">
+    <rect width="260" height="100" rx="12" fill="url(#cardGrad1)" stroke="#38bdf8" stroke-width="1.5" filter="url(#boxShadow)"/>
+    <text x="20" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#38bdf8">
+      🛰️ Satellite Remote Sensing
+    </text>
+    <text x="20" y="55" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">
+      • Sentinel-5P TROPOMI NO₂
+    </text>
+    <text x="20" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      MODIS Aerosol Optical Depth
+    </text>
+  </g>
+
+  <!-- ARROWS FROM INPUTS TO FUSION CORE -->
+  <path d="M 300 160 L 370 230" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,4"/>
+  <path d="M 300 280 L 370 280" stroke="#38bdf8" stroke-width="2.5"/>
+  <path d="M 300 400 L 370 330" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <!-- FUSION & AI ENGINE (CENTER) -->
+
+  <!-- Multimodal Fusion Matrix -->
+  <g transform="translate(370, 210)">
+    <rect width="260" height="140" rx="14" fill="url(#cardGrad2)" stroke="#818cf8" stroke-width="2" filter="url(#boxShadow)"/>
+    <text x="130" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="900" fill="#818cf8" text-anchor="middle">
+      🧠 Multimodal Risk Fusion
+    </text>
+    <text x="130" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f8fafc" text-anchor="middle">
+      50% Sensor + 25% CV + 25% Sat
+    </text>
+
+    <!-- Branch Boxes Inside Core -->
+    <rect x="15" y="75" width="110" height="48" rx="6" fill="rgba(15, 23, 42, 0.9)" stroke="#ef4444" stroke-width="1.2"/>
+    <text x="70" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#ef4444" text-anchor="middle">
+      🚨 DBSCAN
+    </text>
+    <text x="70" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">
+      Hidden Hotspots
+    </text>
+
+    <rect x="135" y="75" width="110" height="48" rx="6" fill="rgba(15, 23, 42, 0.9)" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="190" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="800" fill="#38bdf8" text-anchor="middle">
+      📈 Random Forest
+    </text>
+    <text x="190" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">
+      24h AQI Forecaster
+    </text>
+  </g>
+
+  <!-- ARROWS FROM FUSION TO OUTPUTS -->
+  <path d="M 630 250 L 700 180" stroke="#4ade80" stroke-width="2.5"/>
+  <path d="M 630 310 L 700 380" stroke="#4ade80" stroke-width="2.5"/>
+
+  <!-- OUTPUT DECISION CARDS (RIGHT) -->
+
+  <!-- Card 1: Executive Control Center -->
+  <g transform="translate(700, 110)">
+    <rect width="260" height="140" rx="12" fill="url(#cardGrad3)" stroke="#4ade80" stroke-width="1.5" filter="url(#boxShadow)"/>
+    <text x="20" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#4ade80">
+      📊 Executive Dashboard
+    </text>
+    <text x="20" y="56" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">
+      • 6-Card KPI Grid &amp; Gauges
+    </text>
+    <text x="20" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">
+      • Dynamic Health Advisories
+    </text>
+    <text x="20" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">
+      • 24h AQI Trajectory (R² = 0.94)
+    </text>
+  </g>
+
+  <!-- Card 2: Municipal Decision Cards & Dispatch -->
+  <g transform="translate(700, 290)">
+    <rect width="260" height="140" rx="12" fill="url(#cardGrad3)" stroke="#4ade80" stroke-width="1.5" filter="url(#boxShadow)"/>
+    <text x="20" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#4ade80">
+      🚒 Municipal Decision Support
+    </text>
+    <text x="20" y="56" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">
+      • Automated Resource Dispatch
+    </text>
+    <text x="20" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">
+      • Est. -24% PM2.5 Impact Card
+    </text>
+    <text x="20" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">
+      • Budgeting &amp; Ward Protocol
+    </text>
+  </g>
+
+  <!-- Footer Banner Accent -->
+  <rect x="40" y="475" width="920" height="3" fill="url(#accentGrad)" rx="1.5"/>
+</svg>

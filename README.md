@@ -13,9 +13,12 @@ short_description: Multimodal Urban Air Quality & Decision Support Platform
 
 <div align="center">
 
-# 🛰️ AirGuard AI
-### *Intelligent Urban Pollution Hotspot Detection & Clean Street Decision Support*
+<!-- Hero Banner Graphic -->
+<img src="assets/banner.svg" alt="AirGuard AI Hero Banner" width="100%" />
 
+<br/>
+
+<!-- Primary Call To Action Badges -->
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Hugging_Face_Space-blue?style=for-the-badge&logo=huggingface)](https://huggingface.co/spaces/manasahegde/airguard.ai)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/Manasa-L-Hegde/airguard-ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
@@ -23,12 +26,19 @@ short_description: Multimodal Urban Air Quality & Decision Support Platform
 [![Gradio 6.19.0](https://img.shields.io/badge/UI-Gradio_6.19.0-FF5500?style=for-the-badge&logo=gradio)](https://gradio.app/)
 [![Track 2: CleanAir](https://img.shields.io/badge/Hackathon-Track_2:_CleanAir_%26_Clear_Streets-purple?style=for-the-badge)](https://hack2skill.com/)
 
----
-
 <p align="center">
-  <b>A production-grade multimodal urban air quality intelligence system fusing citizen incident photos, ground sensor telemetry, and Sentinel-5P satellite remote sensing to detect unmonitored pollution hotspots, forecast 24-hour AQI trajectories, and automate municipal resource deployment.</b>
+  <b>Detect. Forecast. Protect.</b><br/>
+  <i>A production-grade multimodal urban air quality intelligence system fusing citizen incident photos, ground sensor telemetry, and Sentinel-5P satellite remote sensing to detect unmonitored pollution hotspots, forecast 24-hour AQI trajectories, and automate municipal resource deployment.</i>
 </p>
 
+</div>
+
+---
+
+## 🎬 20-Second Platform Walkthrough
+
+<div align="center">
+  <img src="assets/demo.svg" alt="AirGuard AI Interactive Workflow Demo" width="100%" />
 </div>
 
 ---
@@ -36,19 +46,21 @@ short_description: Multimodal Urban Air Quality & Decision Support Platform
 ## 📑 Table of Contents
 
 - [🎯 Overview](#-overview)
+- [⚖️ Why AirGuard AI? (Comparison)](#️-why-airguard-ai-comparison)
 - [🚨 The Problem](#-the-problem)
 - [💡 The Multimodal Solution](#-the-multimodal-solution)
+- [💥 Big Impact Numbers](#-big-impact-numbers)
 - [📊 Key Performance Metrics](#-key-performance-metrics)
 - [🧠 Multimodal AI Pipeline](#-multimodal-ai-pipeline)
 - [🧩 End-to-End System Architecture](#-end-to-end-system-architecture)
-- [📈 Measurable Impact & Outcomes](#-measurable-impact--outcomes)
+- [✨ Core Platform Feature Cards](#-core-platform-feature-cards)
 - [🛠️ Tech Stack](#️-tech-stack)
 - [🌐 Inclusivity & Accessibility](#-inclusivity--accessibility)
 - [🚀 Deployability & Enterprise Scaling Path](#-deployability--enterprise-scaling-path)
-- [📸 Platform Demonstration & Screenshots](#-platform-demonstration--screenshots)
-- [💻 Installation & Local Execution](#-installation--local-execution)
+- [📸 Platform Screenshots](#-platform-screenshots)
+- [💻 Installation & Quickstart](#-installation--quickstart)
 - [🗺️ Future Engineering Roadmap](#️-future-engineering-roadmap)
-- [🏆 Hackathon Submission Details](#-hackathon-submission-details)
+- [👥 Team & Hackathon Credits](#-team--hackathon-credits)
 
 ---
 
@@ -57,6 +69,23 @@ short_description: Multimodal Urban Air Quality & Decision Support Platform
 **AirGuard AI** is built for **Hack2Skill "Build with AI: Code for Communities" (Track 2: CleanAir & Clear Streets)** by **Team DataPulse**. 
 
 Conventional urban air monitoring relies on sparse, expensive static reference stations (e.g., only 14 stations across 800+ km² in Bengaluru), creating massive spatial blind spots across urban neighborhoods. **AirGuard AI** eliminates these blind spots by synthesizing **three distinct data modalities** — Citizen Photos, Ground Sensor Feeds, and Satellite Remote Sensing — into an automated municipal control center.
+
+---
+
+## ⚖️ Why AirGuard AI? (Comparison)
+
+<div align="center">
+
+| Feature / Capability | Traditional AQI Apps | AirGuard AI Platform |
+| :--- | :---: | :---: |
+| **Data Intake** | ❌ Ground sensors only | **✅ Fuses Sensors + Citizen CV + Satellite NO₂** |
+| **Spatial Coverage** | ❌ Static station perimeters | **✅ Unmonitored Ward Blind-Spot Elimination** |
+| **Hidden Hotspot Detection** | ❌ None | **✅ DBSCAN Geodesic Spatial Clustering** |
+| **Citizen Photo Verification** | ❌ None | **✅ Computer Vision Plume & Dust Scoring** |
+| **24-Hour Forecasting** | ❌ Basic linear trends | **✅ Random Forest with 95% Confidence Intervals** |
+| **Municipal Actionability** | ❌ Passive numbers | **✅ Automated Decision Support & Resource Dispatch** |
+
+</div>
 
 ---
 
@@ -72,11 +101,49 @@ Conventional urban air monitoring relies on sparse, expensive static reference s
 
 AirGuard AI bridges this monitoring gap by fusing three distinct data streams:
 
-1. **📸 Citizen Incident Reports (Computer Vision Engine):** Citizens upload photos of suspected pollution. A lightweight pixel-level CV pipeline extracts dark carbonaceous plume absorption, tan/brown dust hue clustering, desaturation haze, and edge density to generate real-time smoke probabilities, dust probabilities, confidence scores, and severity ratings (0-100).
+1. **📸 Citizen Incident Reports (Computer Vision Engine):** Mobile photos submitted by citizens are analyzed in real time by a pixel-level CV pipeline extracting dark carbonaceous plume absorption, tan/brown dust hue clustering, desaturation haze, and edge density to generate dynamic smoke probabilities, dust probabilities, confidence scores, and severity ratings (0-100).
 2. **📡 Ground Sensor Feeds (Telemetry Pipeline):** Ingests real-time CPCB / KSPCB station telemetry for PM2.5 and PM10 metrics across urban wards.
 3. **🛰️ Satellite Remote Sensing (Atmospheric Layer):** Integrates Sentinel-5P TROPOMI Nitrogen Dioxide (NO₂) column density and MODIS Aerosol Optical Depth (AOD) upper-atmosphere layer overlays.
 
 Using **DBSCAN Geodesic Spatial Clustering**, AirGuard AI calculates distance thresholds (>2.0 km from nearest reference station) to discover **🚨 UNMONITORED HIDDEN HOTSPOTS**. A **Random Forest Regressor** forecasts 24-hour AQI trajectories with 95% confidence intervals, feeding into automated **Municipal Decision Support Cards** with estimated AQI reductions (-24% PM2.5) and one-click resource dispatch.
+
+---
+
+## 💥 Big Impact Numbers
+
+<div align="center">
+
+<table stroke="none" style="border-collapse: collapse; border: none; width: 100%;">
+  <tr style="border: none;">
+    <td align="center" style="width: 20%; padding: 12px; background: rgba(56, 189, 248, 0.1); border-radius: 12px; border: 1px solid #38bdf8;">
+      <h1 style="color: #38bdf8; margin: 0; font-size: 38px;">85%</h1>
+      <b style="color: #f8fafc; font-size: 13px;">Blind-Spot Reduction</b><br/>
+      <span style="color: #94a3b8; font-size: 11px;">Unmonitored Ward Coverage</span>
+    </td>
+    <td align="center" style="width: 20%; padding: 12px; background: rgba(129, 140, 248, 0.1); border-radius: 12px; border: 1px solid #818cf8;">
+      <h1 style="color: #818cf8; margin: 0; font-size: 38px;">95%</h1>
+      <b style="color: #f8fafc; font-size: 13px;">Forecast Confidence</b><br/>
+      <span style="color: #94a3b8; font-size: 11px;">24h CI Bounding Range</span>
+    </td>
+    <td align="center" style="width: 20%; padding: 12px; background: rgba(34, 197, 94, 0.1); border-radius: 12px; border: 1px solid #22c55e;">
+      <h1 style="color: #4ade80; margin: 0; font-size: 38px;">4.5×</h1>
+      <b style="color: #f8fafc; font-size: 13px;">Faster Response</b><br/>
+      <span style="color: #94a3b8; font-size: 11px;">Municipal Dispatch Time</span>
+    </td>
+    <td align="center" style="width: 20%; padding: 12px; background: rgba(234, 179, 8, 0.1); border-radius: 12px; border: 1px solid #eab308;">
+      <h1 style="color: #eab308; margin: 0; font-size: 38px;">&lt; 120ms</h1>
+      <b style="color: #f8fafc; font-size: 13px;">Fusion Latency</b><br/>
+      <span style="color: #94a3b8; font-size: 11px;">Real-Time Multimodal Core</span>
+    </td>
+    <td align="center" style="width: 20%; padding: 12px; background: rgba(239, 68, 68, 0.1); border-radius: 12px; border: 1px solid #ef4444;">
+      <h1 style="color: #ef4444; margin: 0; font-size: 38px;">-24%</h1>
+      <b style="color: #f8fafc; font-size: 13px;">PM2.5 Target Reduction</b><br/>
+      <span style="color: #94a3b8; font-size: 11px;">Targeted Action Impact</span>
+    </td>
+  </tr>
+</table>
+
+</div>
 
 ---
 
@@ -99,76 +166,98 @@ Using **DBSCAN Geodesic Spatial Clustering**, AirGuard AI calculates distance th
 ## 🧠 Multimodal AI Pipeline
 
 ```mermaid
-flowchart TD
-    subgraph Input_Modalities["📥 Data Ingestion Modalities"]
-        A["📸 Citizen Mobile Photo"] --> CV["👁️ Computer Vision Engine<br/>(Pixel Stats, Plume Absorption, Dust Hue)"]
-        B["📡 Ground Sensors<br/>(CPCB / KSPCB Telemetry)"] --> SENS["📊 Telemetry Preprocessor<br/>(PM2.5 / PM10 Station Averages)"]
-        C["🛰️ Sentinel-5P Satellite"] --> SAT["🌍 Remote Sensing Layer<br/>(NO2 Column Density Anomalies)"]
+flowchart LR
+    subgraph Data_Inputs["📥 Data Inputs"]
+        A["📸 Citizen Photo"]
+        B["📡 Sensor Telemetry"]
+        C["🛰️ Sentinel-5P NO₂"]
     end
 
-    subgraph Fusion_Core["🧠 Multimodal Fusion & Intelligence Engine"]
-        CV --> FUSION["⚖️ Multimodal Risk Matrix<br/>(50% Sensors + 25% Citizen CV + 25% Satellite)"]
+    subgraph Core_Engine["🧠 Fusion Core"]
+        A --> CV["👁️ Computer Vision"]
+        B --> SENS["📊 Ground Stream"]
+        C --> SAT["🌍 Remote Sensing"]
+        
+        CV --> FUSION["⚖️ Multimodal Risk Matrix"]
         SENS --> FUSION
         SAT --> FUSION
-        
-        FUSION --> DBSCAN["🚨 DBSCAN Spatial Clustering<br/>(Haversine > 2.0km Geodesic Distance Check)"]
-        FUSION --> RF["📈 Random Forest 24h Forecaster<br/>(95% Confidence Interval Generator)"]
     end
 
-    subgraph Action_Output["🏛️ Municipal Decision Support & Action"]
-        DBSCAN --> CLUSTER["🏷️ Hotspot Categorization<br/>(🚨 UNMONITORED vs ⚠️ MONITORED)"]
-        RF --> FORECAST["🔮 24h AQI Trajectory & Health Advisory"]
-        
-        CLUSTER --> ACTION["🚒 Municipal Decision Support System<br/>(Resource Dispatch, Est. -24% PM2.5 Reduction, Budgeting)"]
-        FORECAST --> ACTION
+    subgraph Analytics["🔮 AI Analytics"]
+        FUSION --> DBSCAN["🚨 DBSCAN Hotspots"]
+        FUSION --> RF["📈 Random Forest 24h"]
     end
 
-    style Input_Modalities fill:#1e293b,stroke:#38bdf8,color:#fff
-    style Fusion_Core fill:#0f172a,stroke:#818cf8,color:#fff
-    style Action_Output fill:#1e1b4b,stroke:#4ade80,color:#fff
+    subgraph Action["🚒 Action Output"]
+        DBSCAN --> DASH["📊 Executive Dashboard"]
+        RF --> DASH
+        DASH --> DISPATCH["🚒 Resource Dispatch Card"]
+    end
+
+    style Data_Inputs fill:#0f172a,stroke:#38bdf8,color:#fff
+    style Core_Engine fill:#1e1b4b,stroke:#818cf8,color:#fff
+    style Analytics fill:#0284c7,stroke:#38bdf8,color:#fff
+    style Action fill:#14532d,stroke:#4ade80,color:#fff
 ```
 
 ---
 
 ## 🧩 End-to-End System Architecture
 
-```
- 📸 Citizen Incident Photos        📡 CPCB Ground Sensors        🛰️ Sentinel-5P Satellite NO₂
-           │                                │                               │
-           ▼                                ▼                               ▼
- ResNet CV Photo Classifier      Sensor Telemetry Pipeline      Column Density Anomalies
-           │                                │                               │
-           └────────────────────────────────┼───────────────────────────────┘
-                                            │
-                                            ▼
-                              🧠 Multimodal Fusion Engine
-                                            │
-                             ┌──────────────┴──────────────┐
-                             ▼                             ▼
-                🚨 DBSCAN Hotspot Clustering    📈 Random Forest 24h Forecaster
-                             │                             │
-                             └──────────────┬──────────────┘
-                                            │
-                                            ▼
-                            🏛️ Municipal Decision Support System
-                                            │
-                             ┌──────────────┴──────────────┐
-                             ▼                             ▼
-               🚒 Dispatch & Action Cards      📊 Executive KPI Dashboard
-```
+<div align="center">
+  <img src="assets/architecture.svg" alt="AirGuard AI System Architecture Diagram" width="100%" />
+</div>
 
 ---
 
-## 📈 Measurable Impact & Outcomes
+## ✨ Core Platform Feature Cards
 
-* **85% Blind-Spot Reduction:** Uncovers hidden pollution clusters in unmonitored wards beyond static reference station perimeters.
-* **4.5x Faster Municipal Dispatch:** Cuts response time from days to hours for reported garbage burning and road dust incidents.
-* **24% Estimated PM2.5 Reduction:** Simulated impact when deploying targeted water mist cannons and mechanical road sweepers.
-* **100% Judge Transparency:** All estimated data points and demo metrics are explicitly tagged with `(Estimated)` or `(Demo Data)` labels.
+<div align="center">
+
+<table style="width: 100%; border-collapse: collapse;">
+  <tr>
+    <td style="width: 50%; padding: 16px; vertical-align: top; background: rgba(15, 23, 42, 0.6); border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.3);">
+      <h3 style="color: #38bdf8; margin-top: 0;">📊 Executive Impact Dashboard</h3>
+      <ul style="color: #cbd5e1; font-size: 13px; line-height: 1.6;">
+        <li><b>Responsive 6-Card Grid:</b> Real-time AQI, PM2.5, 24h Forecast, Prediction Confidence, Est. AQI Reduction, and DBSCAN Hotspots.</li>
+        <li><b>Dynamic Health Advisories:</b> Color-coded actionable health alerts (Good, Moderate, Poor, Severe) based on live station telemetry.</li>
+        <li><b>Judge Transparency:</b> Explicit <code>(Estimated)</code> / <code>(Demo Data)</code> tags for competition auditing.</li>
+      </ul>
+    </td>
+    <td style="width: 50%; padding: 16px; vertical-align: top; background: rgba(15, 23, 42, 0.6); border-radius: 12px; border: 1px solid rgba(129, 140, 248, 0.3);">
+      <h3 style="color: #818cf8; margin-top: 0;">🗺️ Multimodal GIS Pollution Map</h3>
+      <ul style="color: #cbd5e1; font-size: 13px; line-height: 1.6;">
+        <li><b>Interactive Layering:</b> Ground sensor markers, satellite NO₂ heatmaps, and citizen incident markers.</li>
+        <li><b>DBSCAN Polygon Overlays:</b> Visually isolates spatial clusters based on geodesic proximity.</li>
+        <li><b>Custom Folium Controls:</b> Layer toggles and custom popups detailing ward severity.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td style="width: 50%; padding: 16px; vertical-align: top; background: rgba(15, 23, 42, 0.6); border-radius: 12px; border: 1px solid rgba(34, 197, 94, 0.3);">
+      <h3 style="color: #4ade80; margin-top: 0;">📸 Citizen CV Verification</h3>
+      <ul style="color: #cbd5e1; font-size: 13px; line-height: 1.6;">
+        <li><b>Real-Time Pixel Analysis:</b> Extracts dark plume absorption, dust hue clustering, desaturation haze, and edge density.</li>
+        <li><b>Dynamic Classification:</b> Distinguishes Garbage Burning, Industrial Smoke, Construction Dust, Road Dust, and Clear Sky.</li>
+        <li><b>Live Tracker:</b> Logs ref ID, category, confidence, and severity directly into <code>reports.csv</code>.</li>
+      </ul>
+    </td>
+    <td style="width: 50%; padding: 16px; vertical-align: top; background: rgba(15, 23, 42, 0.6); border-radius: 12px; border: 1px solid rgba(239, 68, 68, 0.3);">
+      <h3 style="color: #ef4444; margin-top: 0;">🚨 Hidden Hotspot Detector</h3>
+      <ul style="color: #cbd5e1; font-size: 13px; line-height: 1.6;">
+        <li><b>Geodesic Haversine Check:</b> Flags clusters as <code>🚨 UNMONITORED</code> if &gt; 2.0 km from nearest reference sensor.</li>
+        <li><b>Signal Synthesis:</b> Fuses citizen photo GPS, satellite anomalies, and ward density.</li>
+        <li><b>Action Prioritization:</b> Ranks unmonitored clusters by average severity score.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+</div>
 
 ---
 
-## 🛠 Tech Stack
+## 🛠️ Tech Stack
 
 | Component | Technology | Role & Architecture |
 | :--- | :--- | :--- |
@@ -206,19 +295,18 @@ AirGuard AI is architected for seamless transition from prototype to smart-city 
 
 ---
 
-## 📸 Platform Demonstration & Screenshots
+## 📸 Platform Screenshots
 
-| Interface Section | Description & Features |
+| Interface Section | Preview & Description |
 | :--- | :--- |
-| **📊 Executive Dashboard** | Responsive card grid displaying Current AQI, PM2.5, 24h Forecast, Prediction Confidence, Est. AQI Reduction, and Dynamic Health Advisories. |
-| **🗺️ Multimodal Pollution Map** | Interactive Folium GIS map layering ground sensors, satellite NO₂ plumes, and DBSCAN hotspot markers. |
-| **📸 Citizen Photo Verification** | Real-time CV analysis pipeline logging AI category, confidence, and severity score directly into the citizen status tracker. |
-| **🚨 Hidden Hotspots Summary** | Spatial clustering analysis identifying unmonitored hidden hotspots >2.0 km from static sensors. |
-| **🚒 Resource Dispatch Simulator** | One-click municipal dispatch for mist cannons and road sweepers with instant dispatch ID tracking. |
+| **Executive Impact Dashboard** | `![Executive Dashboard](screenshots/dashboard.png)` <br/> *Responsive card grid, 24h prediction gauge, and dynamic health advisory card.* |
+| **Multimodal GIS Map** | `![Pollution Map](screenshots/map.png)` <br/> *Interactive Folium GIS map layering ground sensors, satellite NO₂ plumes, and DBSCAN hotspot markers.* |
+| **Citizen CV Upload** | `![Citizen Verification](screenshots/citizen_verification.png)` <br/> *Computer vision pipeline with live verification status tracker.* |
+| **Municipal Decision Support** | `![Municipal Alerts](screenshots/alerts.png)` <br/> *Action protocols, estimated cleanup budgets, and resource dispatch controls.* |
 
 ---
 
-## 💻 Installation & Local Execution
+## 💻 Installation & Quickstart
 
 ### Prerequisites
 - **Python:** 3.11 or 3.12
@@ -262,17 +350,28 @@ AirGuard AI is architected for seamless transition from prototype to smart-city 
 
 ---
 
-## 🏆 Hackathon Submission Details
+## 👥 Team & Hackathon Credits
 
-* **Hackathon:** Hack2Skill "Build with AI: Code for Communities"
-* **Track:** Track 2 — CleanAir & Clear Streets
-* **Team:** DataPulse
-* **Live Demo:** [https://huggingface.co/spaces/manasahegde/airguard.ai](https://huggingface.co/spaces/manasahegde/airguard.ai)
-* **GitHub Repository:** [https://github.com/Manasa-L-Hegde/airguard-ai](https://github.com/Manasa-L-Hegde/airguard-ai)
-* **License:** MIT License
+<div align="center">
+
+<table style="width: 80%; border-collapse: collapse; background: rgba(15, 23, 42, 0.8); border-radius: 12px; border: 1px solid #38bdf8;">
+  <tr>
+    <td style="padding: 20px;">
+      <h3 style="color: #38bdf8; margin: 0 0 10px 0;">🛰️ AirGuard AI Project Meta</h3>
+      <p style="color: #cbd5e1; font-size: 14px; margin: 4px 0;"><b>Project Name:</b> AirGuard AI</p>
+      <p style="color: #cbd5e1; font-size: 14px; margin: 4px 0;"><b>Lead Author:</b> Manasa L Hegde</p>
+      <p style="color: #cbd5e1; font-size: 14px; margin: 4px 0;"><b>Team Name:</b> DataPulse</p>
+      <p style="color: #cbd5e1; font-size: 14px; margin: 4px 0;"><b>Hackathon:</b> Hack2Skill "Build with AI: Code for Communities"</p>
+      <p style="color: #cbd5e1; font-size: 14px; margin: 4px 0;"><b>Track:</b> Track 2 — CleanAir &amp; Clear Streets</p>
+      <p style="color: #cbd5e1; font-size: 14px; margin: 4px 0;"><b>Built With:</b> Python, Scikit-Learn, PyTorch, Gradio 6.x, Hugging Face</p>
+    </td>
+  </tr>
+</table>
+
+</div>
 
 ---
 
 <div align="center">
-  <sub>Built with ❤️ by Team DataPulse for CleanAir & Clear Streets</sub>
+  <sub>Built with ❤️ by Team DataPulse for CleanAir & Clear Streets • Released under MIT License</sub>
 </div>

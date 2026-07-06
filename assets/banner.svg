@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="heroBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="40%" stop-color="#0f172a"/>
+      <stop offset="80%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <!-- Card Glass Gradient -->
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.08)"/>
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.02)"/>
+    </linearGradient>
+
+    <!-- Accent Gradients -->
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#4ade80"/>
+    </linearGradient>
+
+    <linearGradient id="glowPulse" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="420" fill="url(#heroBg)" rx="16"/>
+
+  <!-- Geometric Grid Background Lines -->
+  <g opacity="0.08" stroke="#38bdf8" stroke-width="1">
+    <path d="M 0 60 L 1200 60 M 0 120 L 1200 120 M 0 180 L 1200 180 M 0 240 L 1200 240 M 0 300 L 1200 300 M 0 360 L 1200 360"/>
+    <path d="M 120 0 L 120 420 M 240 0 L 240 420 M 360 0 L 360 420 M 480 0 L 480 420 M 600 0 L 600 420 M 720 0 L 720 420 M 840 0 L 840 420 M 960 0 L 960 420 M 1080 0 L 1080 420"/>
+  </g>
+
+  <!-- Constellation Network Graphics (Right Side) -->
+  <g opacity="0.35">
+    <line x1="850" y1="120" x2="980" y2="80" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <line x1="980" y1="80" x2="1100" y2="160" stroke="#818cf8" stroke-width="1.5"/>
+    <line x1="1100" y1="160" x2="1020" y2="280" stroke="#4ade80" stroke-width="1.5"/>
+    <line x1="1020" y1="280" x2="880" y2="310" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <line x1="880" y1="310" x2="850" y2="120" stroke="#ef4444" stroke-width="1.5"/>
+    <line x1="980" y1="80" x2="1020" y2="280" stroke="#38bdf8" stroke-width="1"/>
+
+    <circle cx="850" cy="120" r="6" fill="#38bdf8" filter="url(#neonGlow)"/>
+    <circle cx="980" cy="80" r="8" fill="#818cf8" filter="url(#neonGlow)"/>
+    <circle cx="1100" cy="160" r="7" fill="#4ade80" filter="url(#neonGlow)"/>
+    <circle cx="1020" cy="280" r="9" fill="#ef4444" filter="url(#neonGlow)"/>
+    <circle cx="880" cy="310" r="6" fill="#f97316"/>
+  </g>
+
+  <!-- Main Hero Content Box (Glassmorphism) -->
+  <rect x="50" y="40" width="1100" height="340" fill="url(#glassGrad)" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.5" rx="16" filter="url(#shadow)"/>
+
+  <!-- Left Logo Icon Graphic -->
+  <g transform="translate(90, 85)">
+    <!-- Outer Glow Circle -->
+    <circle cx="90" cy="90" r="82" fill="url(#glowPulse)"/>
+    <circle cx="90" cy="90" r="75" fill="#0f172a" stroke="#38bdf8" stroke-width="2.5"/>
+    
+    <!-- Orbit Rings -->
+    <ellipse cx="90" cy="90" rx="60" ry="24" fill="none" stroke="#4ade80" stroke-width="2" stroke-dasharray="5,4" transform="rotate(-25 90 90)"/>
+    <ellipse cx="90" cy="90" rx="62" ry="26" fill="none" stroke="#38bdf8" stroke-width="1.5" transform="rotate(35 90 90)"/>
+
+    <!-- Shield & Satellite Center -->
+    <path d="M 90 42 L 118 54 C 118 84 105 108 90 122 C 75 108 62 84 62 54 Z" fill="url(#textGrad)" opacity="0.85"/>
+    <path d="M 90 48 L 112 58 C 112 83 102 102 90 114 C 78 102 68 83 68 58 Z" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+
+    <!-- Center Satellite Dot -->
+    <circle cx="90" cy="80" r="6" fill="#ffffff" filter="url(#neonGlow)"/>
+  </g>
+
+  <!-- Title & Tagline Content -->
+  <g transform="translate(310, 85)">
+    <!-- Hackathon Pill Badge -->
+    <rect x="0" y="0" width="410" height="28" fill="rgba(56, 189, 248, 0.12)" stroke="#38bdf8" stroke-width="1" rx="14"/>
+    <text x="14" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#38bdf8" letter-spacing="0.5">
+      🏆 HACK2SKILL: BUILD WITH AI • TRACK 2: CLEAN AIR
+    </text>
+
+    <!-- Main Title -->
+    <text x="0" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="52" font-weight="900" fill="url(#textGrad)" letter-spacing="-1">
+      AIRGUARD AI
+    </text>
+
+    <!-- Subtitle / Mission -->
+    <text x="0" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#f8fafc" letter-spacing="0.2">
+      Multimodal Urban Pollution Intelligence &amp; Decision Support
+    </text>
+
+    <!-- Three Core Pillars -->
+    <g transform="translate(0, 142)">
+      <!-- Pillar 1 -->
+      <rect x="0" y="0" width="135" height="34" fill="rgba(34, 197, 94, 0.15)" stroke="#22c55e" stroke-width="1" rx="8"/>
+      <text x="14" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#4ade80">
+        🛰️ DETECT
+      </text>
+
+      <!-- Pillar 2 -->
+      <rect x="147" y="0" width="145" height="34" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1" rx="8"/>
+      <text x="161" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#38bdf8">
+        📈 FORECAST
+      </text>
+
+      <!-- Pillar 3 -->
+      <rect x="304" y="0" width="135" height="34" fill="rgba(129, 140, 248, 0.15)" stroke="#818cf8" stroke-width="1" rx="8"/>
+      <text x="318" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="800" fill="#818cf8">
+        🚒 PROTECT
+      </text>
+    </g>
+
+    <!-- Modality Chips -->
+    <g transform="translate(0, 202)">
+      <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#94a3b8">
+        Fusing 3 Data Modalities:
+      </text>
+      <text x="145" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">
+        📸 Citizen Vision  •  📡 Ground Telemetry  •  🛰️ Sentinel-5P NO₂
+      </text>
+    </g>
+  </g>
+
+  <!-- Bottom Accent Stripe -->
+  <rect x="50" y="376" width="1100" height="4" fill="url(#textGrad)" rx="2"/>
+</svg>
