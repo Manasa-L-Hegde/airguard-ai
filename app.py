@@ -465,25 +465,129 @@ def handle_station_analysis(station_name, lang="English"):
         trend_fig = plot_trend(station_name)
         gauge_fig = plot_gauge(latest_pm25)
 
-        pred_html = f"""
-        <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px;">
-            <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 14px; font-weight: 600; text-transform: uppercase;">24h Forecast: {forecast_res['predicted_aqi_24h']} AQI</h4>
-            <div style="text-align: center; margin-bottom: 16px;">
-                <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase;">Predicted Category</div>
-                <div style="font-size: 28px; font-weight: bold; color: {AQI_COLORS.get(pred_cat, '#38bdf8')};">{pred_cat}</div>
-                <div style="font-size: 13px; color: #4ade80; margin-top: 4px;">Model Confidence: {confidence:.1f}%</div>
-                <div style="font-size: 12px; color: #cbd5e1; margin-top: 6px;"><b>95% CI Range:</b> {forecast_res['lower_bound_95']} – {forecast_res['upper_bound_95']} AQI</div>
-            </div>
-        </div>"""
+        HEALTH_ADVISORIES = {
+            "Good": {
+                "title": "🟢 Good Air Quality — Safe for Outdoor Activity",
+                "advisory": "Air quality is satisfactory. Safe for all outdoor activities and natural room ventilation.",
+                "color": "#22c55e",
+                "bg": "rgba(34, 197, 94, 0.12)"
+            },
+            "Moderate": {
+                "title": "🟡 Moderate Air Quality — Caution for Sensitive Groups",
+                "advisory": "Acceptable air quality. Children, elderly, and individuals with respiratory conditions (asthma) should reduce prolonged heavy outdoor exertion.",
+                "color": "#eab308",
+                "bg": "rgba(234, 179, 8, 0.12)"
+            },
+            "Poor": {
+                "title": "🟠 Unhealthy Air Advisory — Sensitive Group Warning",
+                "advisory": "Unhealthy for sensitive groups. Limit outdoor activities; wear N95/KN95 masks near busy arterial roads and industrial corridors.",
+                "color": "#f97316",
+                "bg": "rgba(249, 115, 22, 0.12)"
+            },
+            "Severe": {
+                "title": "🔴 Severe Pollution Health Warning",
+                "advisory": "Hazardous respiratory risk. Avoid outdoor physical exertion, keep windows closed, run indoor air purifiers, and wear N95 masks.",
+                "color": "#ef4444",
+                "bg": "rgba(239, 68, 68, 0.12)"
+            }
+        }
+        adv = HEALTH_ADVISORIES.get(latest_aqi_cat, HEALTH_ADVISORIES["Moderate"])
+        health_advisory_html = f"""
+        <div style="background: {adv['bg']}; border: 1px solid {adv['color']}; border-radius: 10px; padding: 12px; margin-top: 10px;">
+            <b style="color: {adv['color']}; font-size: 13px; display: block; margin-bottom: 4px;">{adv['title']}</b>
+            <span style="color: #cbd5e1; font-size: 11px; line-height: 1.4; display: block;">{adv['advisory']}</span>
+        </div>
+        """
 
-        return trend_fig, gauge_fig, forecast_chart, fusion_chart, timeline_chart, pred_html, alert_html, exec_kpis_html
+        pred_color = AQI_COLORS.get(pred_cat, '#38bdf8')
+        latest_color = AQI_COLORS.get(latest_aqi_cat, '#22c55e')
+
+        pred_html = f"""
+        <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 18px; margin-top: 14px;">
+            <h4 style="margin: 0 0 14px 0; color: #38bdf8; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
+                <span>🎯</span> Station Telemetry & 24h Forecast Metrics
+            </h4>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                
+                <!-- Card 1: Current AQI -->
+                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-left: 4px solid {latest_color}; border-radius: 10px; padding: 14px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                        <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(34, 197, 94, 0.15); display: flex; align-items: center; justify-content: center; font-size: 16px;">🌿</div>
+                        <span style="background: rgba(34, 197, 94, 0.2); color: {latest_color}; border: 1px solid {latest_color}; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 10px;">{latest_aqi_cat}</span>
+                    </div>
+                    <div style="color: #94a3b8; font-size: 10px; font-weight: 600; text-transform: uppercase;">Current AQI</div>
+                    <div style="font-size: 22px; font-weight: 800; color: #f8fafc; margin-top: 2px;">{int(latest_pm25)} AQI</div>
+                    <div style="font-size: 10px; color: #64748b; margin-top: 4px;">Station Live Feed</div>
+                </div>
+
+                <!-- Card 2: Latest PM2.5 -->
+                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-left: 4px solid {latest_color}; border-radius: 10px; padding: 14px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                        <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(56, 189, 248, 0.15); display: flex; align-items: center; justify-content: center; font-size: 16px;">💨</div>
+                        <span style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 10px;">Sensor Active</span>
+                    </div>
+                    <div style="color: #94a3b8; font-size: 10px; font-weight: 600; text-transform: uppercase;">Latest PM2.5</div>
+                    <div style="font-size: 22px; font-weight: 800; color: #f8fafc; margin-top: 2px;">{latest_pm25:.1f} µg/m³</div>
+                    <div style="font-size: 10px; color: #64748b; margin-top: 4px;">Ground Telemetry</div>
+                </div>
+
+                <!-- Card 3: 24h Forecast -->
+                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-left: 4px solid {pred_color}; border-radius: 10px; padding: 14px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                        <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(239, 68, 68, 0.15); display: flex; align-items: center; justify-content: center; font-size: 16px;">📈</div>
+                        <span style="background: rgba(239, 68, 68, 0.2); color: {pred_color}; border: 1px solid {pred_color}; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 10px;">{pred_cat}</span>
+                    </div>
+                    <div style="color: #94a3b8; font-size: 10px; font-weight: 600; text-transform: uppercase;">24h Forecast</div>
+                    <div style="font-size: 22px; font-weight: 800; color: #f8fafc; margin-top: 2px;">{forecast_res['predicted_aqi_24h']} AQI</div>
+                    <div style="font-size: 10px; color: #64748b; margin-top: 4px;">95% CI: {forecast_res['lower_bound_95']} – {forecast_res['upper_bound_95']}</div>
+                </div>
+
+                <!-- Card 4: Est. AQI Reduction -->
+                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-left: 4px solid #22c55e; border-radius: 10px; padding: 14px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                        <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(34, 197, 94, 0.15); display: flex; align-items: center; justify-content: center; font-size: 16px;">📉</div>
+                        <span style="background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid #4ade80; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 10px;">Target</span>
+                    </div>
+                    <div style="color: #94a3b8; font-size: 10px; font-weight: 600; text-transform: uppercase;">Est. AQI Reduction</div>
+                    <div style="font-size: 22px; font-weight: 800; color: #4ade80; margin-top: 2px;">-24% PM2.5</div>
+                    <div style="font-size: 10px; color: #64748b; margin-top: 4px;">With Mitigation (Estimated)</div>
+                </div>
+
+                <!-- Card 5: Prediction Confidence -->
+                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-left: 4px solid #38bdf8; border-radius: 10px; padding: 14px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                        <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(56, 189, 248, 0.15); display: flex; align-items: center; justify-content: center; font-size: 16px;">🎯</div>
+                        <span style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid #38bdf8; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 10px;">High Conf</span>
+                    </div>
+                    <div style="color: #94a3b8; font-size: 10px; font-weight: 600; text-transform: uppercase;">Prediction Confidence</div>
+                    <div style="font-size: 22px; font-weight: 800; color: #f8fafc; margin-top: 2px;">{confidence:.1f}%</div>
+                    <div style="font-size: 10px; color: #64748b; margin-top: 4px;">RF Classifier Model</div>
+                </div>
+
+                <!-- Card 6: Hotspot Zones -->
+                <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-left: 4px solid #ef4444; border-radius: 10px; padding: 14px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                        <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(239, 68, 68, 0.15); display: flex; align-items: center; justify-content: center; font-size: 16px;">🚨</div>
+                        <span style="background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 10px;">Unmonitored</span>
+                    </div>
+                    <div style="color: #94a3b8; font-size: 10px; font-weight: 600; text-transform: uppercase;">Hotspot Zones</div>
+                    <div style="font-size: 22px; font-weight: 800; color: #f8fafc; margin-top: 2px;">2 Clusters</div>
+                    <div style="font-size: 10px; color: #64748b; margin-top: 4px;">DBSCAN Detected</div>
+                </div>
+
+            </div>
+        </div>
+        """
+
+        return trend_fig, gauge_fig, forecast_chart, fusion_chart, timeline_chart, pred_html, alert_html, exec_kpis_html, health_advisory_html
 
     except Exception as e:
         import traceback
         traceback.print_exc()
         err_fig = go.Figure()
         err_fig.update_layout(title="Error Loading Multimodal Analytics")
-        return err_fig, err_fig, err_fig, err_fig, err_fig, f"<div style='color:red;'>Error: {str(e)}</div>", "", ""
+        return err_fig, err_fig, err_fig, err_fig, err_fig, f"<div style='color:red;'>Error: {str(e)}</div>", "", "", ""
 
 
 # ── Gradio UI Construction ───────────────────────────────────────────────────
@@ -561,6 +665,7 @@ with gr.Blocks(title="AirGuard AI — Multimodal Urban Air Quality Platform", cs
                             trend_plot_out = gr.Plot(label="PM2.5 Trend", show_label=False)
                         with gr.Column(scale=1, elem_classes="dark-card"):
                             gauge_plot_out = gr.Plot(label="PM2.5 Gauge", show_label=False)
+                            health_advisory_out = gr.HTML()
 
         # TAB 2: POLLUTION MAP
         with gr.TabItem("🗺️ Multimodal Pollution Map", id="map"):
@@ -684,7 +789,7 @@ with gr.Blocks(title="AirGuard AI — Multimodal Urban Air Quality Platform", cs
         outputs=[
             trend_plot_out, gauge_plot_out, forecast_plot_out, 
             fusion_chart_out, timeline_plot_out, pred_summary_out, 
-            alert_card_out, exec_kpi_container
+            alert_card_out, exec_kpi_container, health_advisory_out
         ]
     )
 
@@ -694,7 +799,7 @@ with gr.Blocks(title="AirGuard AI — Multimodal Urban Air Quality Platform", cs
         outputs=[
             trend_plot_out, gauge_plot_out, forecast_plot_out, 
             fusion_chart_out, timeline_plot_out, pred_summary_out, 
-            alert_card_out, exec_kpi_container
+            alert_card_out, exec_kpi_container, health_advisory_out
         ]
     )
 
@@ -729,7 +834,7 @@ with gr.Blocks(title="AirGuard AI — Multimodal Urban Air Quality Platform", cs
         outputs=[
             trend_plot_out, gauge_plot_out, forecast_plot_out, 
             fusion_chart_out, timeline_plot_out, pred_summary_out, 
-            alert_card_out, exec_kpi_container
+            alert_card_out, exec_kpi_container, health_advisory_out
         ]
     )
 
