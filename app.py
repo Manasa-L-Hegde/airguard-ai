@@ -83,7 +83,8 @@ STATIC_TRANSLATIONS = {
         "citizen_analytics_title": "Today\'s Citizen Analytics",
         "garbage_burning": "Garbage Burning",
         "construction_dust": "Construction Dust",
-        "industrial_smoke": "Industrial Smoke"
+        "industrial_smoke": "Industrial Smoke",
+        "est_label": "(estimated)"
     },
     "ಕನ್ನಡ": {
         "live_indicator": "🟢 ಲೈವ್ | 15 ಸೆಕೆಂಡುಗಳ ಹಿಂದೆ | 14 ನಿಲ್ದಾಣಗಳು",
@@ -97,20 +98,21 @@ STATIC_TRANSLATIONS = {
         "summary_citizens": "👥 ಅಪಾಯದಲ್ಲಿರುವ ನಾಗರಿಕರು",
         "summary_reduction": "📉 ನಿರೀಕ್ಷಿತ AQI ಕಡಿತ",
         "summary_alerts": "⚠️ ಇಂದಿನ ವಾರ್ಡ್ ಎಚ್ಚರಿಕೆಗಳು",
-        "summary_accuracy": "🎯 ಮುನ್ಸೂಚನೆ ನಿಖರತೆ",
+        "summary_accuracy": "🎯 ಮುನ್ಸೂಚನೆ ನಿಖरತೆ",
         "summary_confidence": "🧠 ಮಾದರಿ ವಿಶ್ವಾಸಾರ್ಹತೆ",
         "station_selector_lbl": "ನಿಲ್ದಾಣವನ್ನು ಹುಡುಕಿ / ಆಯ್ಕೆ ಮಾಡಿ",
         "analyze_btn": "ಡೇಟಾ ವಿಶ್ಲೇಷಿಸಿ",
         "forecast_btn": "ಮುನ್ಸೂಚನೆ ಪಡೆಯಿರಿ",
         "submit_report_btn": "ವರದಿ ಸಲ್ಲಿಸಿ",
-        "report_station_lbl": "ಹತ್ತಿರದ ಮಾನಿಟರಿಂಗ್ ನಿಲ್ದಾಣ",
+        "report_station_lbl": "ಹತ್ತಿರದ ಮಾನಿಟरीಂಗ್ ನಿಲ್ದಾಣ",
         "incident_type_lbl": "ಘಟನೆಯ ಪ್ರಕಾರ",
         "img_upload_lbl": "ಚಿತ್ರ ಪುರಾವೆ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ (ಐಚ್ಛಿಕ)",
         "citizen_title": "ಸ್ಥಳೀಯ ಘಟನೆಯನ್ನು ವರದಿ ಮಾಡಿ",
         "citizen_analytics_title": "ಇಂದಿನ ನಾಗರಿಕ ವಿಶ್ಲೇಷಣೆ",
         "garbage_burning": "ಕಸ ಸುಡುವುದು",
         "construction_dust": "ಕಟ್ಟಡ ನಿರ್ಮಾಣ ಧೂಳು",
-        "industrial_smoke": "ಕೈಗಾರಿಕಾ ಹೊಗೆ"
+        "industrial_smoke": "ಕೈಗಾರಿಕಾ ಹೊಗೆ",
+        "est_label": "(ಅಂದಾಜು)"
     },
     "हिंदी": {
         "live_indicator": "🟢 लाइव | 15 सेकंड पहले | 14 स्टेशन",
@@ -137,7 +139,8 @@ STATIC_TRANSLATIONS = {
         "citizen_analytics_title": "आज का नागरिक विश्लेषण",
         "garbage_burning": "कचरा जलाना",
         "construction_dust": "निर्माण धूल",
-        "industrial_smoke": "औद्योगिक धुआं"
+        "industrial_smoke": "औद्योगिक धुआं",
+        "est_label": "(अनुमानित)"
     }
 }
 
@@ -282,11 +285,11 @@ def change_language(lang):
             </div>
             <div class="summary-item">
                 <div class="summary-label">{t['summary_citizens']}</div>
-                <div class="summary-val">68,000+</div>
+                <div class="summary-val">68,000+ <span style="font-size:12px; font-weight:normal; color:#94a3b8;">{t['est_label']}</span></div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">{t['summary_reduction']}</div>
-                <div class="summary-val green-text">18% Avg</div>
+                <div class="summary-val green-text">18% Avg <span style="font-size:12px; font-weight:normal; color:#94a3b8;">{t['est_label']}</span></div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">{t['summary_alerts']}</div>
@@ -454,6 +457,124 @@ def get_station_class(station_name):
         return 'traffic'
     else:
         return 'residential'
+
+def get_action_details(act):
+    details_map = {
+        "Mandate immediate stack monitoring at units": {
+            "icon": "🏭",
+            "impact": "★★★",
+            "cost": "₹2.5L",
+            "imp": "8%"
+        },
+        "Restrict diesel heavy transport peak hours": {
+            "icon": "🚚",
+            "impact": "★★☆",
+            "cost": "₹0.5L",
+            "imp": "6%"
+        },
+        "Inspect Peenya industrial units": {
+            "icon": "🔍",
+            "impact": "★★☆",
+            "cost": "₹1.2L",
+            "imp": "4%"
+        },
+        "Conduct weekly compliance checks": {
+            "icon": "📋",
+            "impact": "★☆☆",
+            "cost": "₹0.8L",
+            "imp": "3%"
+        },
+        "Optimize heavy vehicle schedules": {
+            "icon": "⏰",
+            "impact": "★☆☆",
+            "cost": "₹0.3L",
+            "imp": "2%"
+        },
+        "Enforce green belts around industrial zones": {
+            "icon": "🌳",
+            "impact": "★★☆",
+            "cost": "₹3.5L",
+            "imp": "5%"
+        },
+        "Deploy water mist cannons at junctions": {
+            "icon": "🚿",
+            "impact": "★★★",
+            "cost": "₹4.8L",
+            "imp": "10%"
+        },
+        "Optimize signal timings via traffic control": {
+            "icon": "🚦",
+            "impact": "★★☆",
+            "cost": "₹0.5L",
+            "imp": "7%"
+        },
+        "Enforce construction dust suppressions": {
+            "icon": "🏗️",
+            "impact": "★★☆",
+            "cost": "₹1.5L",
+            "imp": "5%"
+        },
+        "Deploy mechanical road sweepers at night": {
+            "icon": "🧹",
+            "impact": "★★☆",
+            "cost": "₹2.2L",
+            "imp": "6%"
+        },
+        "Increase roadside street plantation": {
+            "icon": "🌱",
+            "impact": "★☆☆",
+            "cost": "₹1.8L",
+            "imp": "3%"
+        },
+        "Optimize public transport routes": {
+            "icon": "🚌",
+            "impact": "★☆☆",
+            "cost": "₹0.6L",
+            "imp": "3%"
+        },
+        "Restrict localized construction activity": {
+            "icon": "🚫",
+            "impact": "★★☆",
+            "cost": "₹0.2L",
+            "imp": "5%"
+        },
+        "Issue ward dust control notices": {
+            "icon": "📄",
+            "impact": "★☆☆",
+            "cost": "₹0.1L",
+            "imp": "4%"
+        },
+        "Enforce strict open waste ban": {
+            "icon": "🚯",
+            "impact": "★★☆",
+            "cost": "₹0.4L",
+            "imp": "6%"
+        },
+        "Increase green neighborhood tree canopy": {
+            "icon": "🌲",
+            "impact": "★★☆",
+            "cost": "₹2.0L",
+            "imp": "4%"
+        },
+        "Sweep ward secondary roads daily": {
+            "icon": "🧹",
+            "impact": "★☆☆",
+            "cost": "₹1.0L",
+            "imp": "2%"
+        },
+        "Inspect commercial eateries fuel compliance": {
+            "icon": "🍳",
+            "impact": "★☆☆",
+            "cost": "₹0.5L",
+            "imp": "2%"
+        }
+    }
+    return details_map.get(act, {
+        "icon": "⚡",
+        "impact": "★★☆",
+        "cost": "₹1.0L",
+        "imp": "5%"
+    })
 
 def get_station_specifics(station_name, pm25_val, pred_cat):
     s_class = get_station_class(station_name)
@@ -718,171 +839,180 @@ def submit_citizen_report(incident_type, station, file_path):
     </div>"""
 
 def make_prediction(station_name, lang="English"):
-    t = DYNAMIC_TRANSLATIONS.get(lang, DYNAMIC_TRANSLATIONS["English"])
-    trend_fig = plot_trend(station_name)
-    wrow = ward_df[ward_df['station'] == station_name]
-    if wrow.empty: return trend_fig, go.Figure(), f"<p>{t['not_found']}</p>", "", "", "", ""
+    try:
+        t = DYNAMIC_TRANSLATIONS.get(lang, DYNAMIC_TRANSLATIONS["English"])
+        trend_fig = plot_trend(station_name)
+        wrow = ward_df[ward_df['station'] == station_name]
+        if wrow.empty: return trend_fig, go.Figure(), f"<p>{t['not_found']}</p>", "", "", "", ""
+            
+        ward_name = wrow.iloc[0]['ward_name']
+        station_history = ts_daily[ts_daily['station'] == station_name].copy()
+        max_date = station_history['date'].max() if len(station_history) > 0 else pd.NaT
+
+        if pd.isna(max_date): return trend_fig, go.Figure(), f"<p>{t['no_data']}</p>", "", "", "", ""
+
+        today = max_date
+        yesterday = today - datetime.timedelta(days=1)
         
-    ward_name = wrow.iloc[0]['ward_name']
-    station_history = ts_daily[ts_daily['station'] == station_name].copy()
-    max_date = station_history['date'].max() if len(station_history) > 0 else pd.NaT
+        latest_pm25 = station_history.sort_values('date').iloc[-1]['pm25']
+        yest_data = station_history[station_history['date'] == yesterday]
+        yesterday_pm25 = yest_data.iloc[0]['pm25'] if not yest_data.empty else latest_pm25
+        
+        current_aqi = pm25_to_aqi(latest_pm25)
+        yest_aqi_val = pm25_to_aqi(yesterday_pm25)
+        current_col = AQI_COLORS.get(current_aqi, '#94a3b8')
+        gauge_fig = plot_gauge(latest_pm25)
+        
+        X, err = build_feature_row(station_name, today, ward_name, station_history)
+        if X is None: return trend_fig, gauge_fig, f"<p>Error: {err}</p>", "", "", "", ""
 
-    if pd.isna(max_date): return trend_fig, go.Figure(), f"<p>{t['no_data']}</p>", "", "", "", ""
+        proba = rf_model.predict_proba(X)[0]
+        classes = list(rf_model.classes_)
+        pred_idx = int(np.argmax(proba))
+        pred_cat = classes[pred_idx]
+        confidence = float(proba[pred_idx]) * 100
+        color = AQI_COLORS[pred_cat]
+        next_d = today + datetime.timedelta(days=1)
+        
+        # Alert
+        alert_html = ""
+        if latest_pm25 > 90 or pred_cat == 'Severe':
+            alert_html = f"""
+            <div style="background: rgba(239, 68, 68, 0.15); border-left: 4px solid #ef4444; padding: 16px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
+                <div style="font-size: 24px;">🚨</div>
+                <div>
+                    <h4 style="margin: 0; color: #fca5a5; font-size: 16px; font-weight: bold;">{t['high_pollution_alert']}</h4>
+                    <p style="margin: 4px 0 0 0; color: #e2e8f0; font-size: 14px;">{t['alert_msg'].format(ward_name=ward_name)}</p>
+                </div>
+            </div>"""
 
-    today = max_date
-    yesterday = today - datetime.timedelta(days=1)
-    
-    latest_pm25 = station_history.sort_values('date').iloc[-1]['pm25']
-    yest_data = station_history[station_history['date'] == yesterday]
-    yesterday_pm25 = yest_data.iloc[0]['pm25'] if not yest_data.empty else latest_pm25
-    
-    current_aqi = pm25_to_aqi(latest_pm25)
-    yest_aqi_val = pm25_to_aqi(yesterday_pm25)
-    current_col = AQI_COLORS.get(current_aqi, '#94a3b8')
-    gauge_fig = plot_gauge(latest_pm25)
-    
-    X, err = build_feature_row(station_name, today, ward_name, station_history)
-    if X is None: return trend_fig, gauge_fig, f"<p>Error: {err}</p>", "", "", "", ""
-
-    proba = rf_model.predict_proba(X)[0]
-    classes = list(rf_model.classes_)
-    pred_idx = int(np.argmax(proba))
-    pred_cat = classes[pred_idx]
-    confidence = float(proba[pred_idx]) * 100
-    color = AQI_COLORS[pred_cat]
-    next_d = today + datetime.timedelta(days=1)
-    
-    # Alert
-    alert_html = ""
-    if latest_pm25 > 90 or pred_cat == 'Severe':
-        alert_html = f"""
-        <div style="background: rgba(239, 68, 68, 0.15); border-left: 4px solid #ef4444; padding: 16px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
-            <div style="font-size: 24px;">🚨</div>
+        # Fetch dynamic parameters
+        spec = get_station_specifics(station_name, latest_pm25, pred_cat)
+        
+        actions_list_html = []
+        for act in spec['actions']:
+            details = get_action_details(act)
+            actions_list_html.append(f"""
+            <div class="action-card" style="background: rgba(15, 23, 42, 0.5) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; border-radius: 8px !important; padding: 12px 16px !important; margin-bottom: 8px !important;">
+                <div class="action-header" style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px !important;">
+                    <span class="action-icon" style="font-size: 16px;">{details['icon']}</span>
+                    <span class="action-name" style="font-size: 13px; font-weight: 600; color: #f8fafc !important;">{act}</span>
+                </div>
+                <div class="action-meta" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 8px !important;">
+                    <div class="meta-item" style="display: flex; flex-direction: column;">
+                        <span class="meta-label" style="color: #94a3b8 !important; font-size: 9px; text-transform: uppercase; font-weight: 500; margin-bottom: 2px;">{t['priority']}</span>
+                        <span class="meta-val star-rating" style="color: #fbbf24 !important; font-weight: 700; font-size: 11px;">{details['impact']}</span>
+                    </div>
+                    <div class="meta-item" style="display: flex; flex-direction: column;">
+                        <span class="meta-label" style="color: #94a3b8 !important; font-size: 9px; text-transform: uppercase; font-weight: 500; margin-bottom: 2px;">Cost</span>
+                        <span class="meta-val" style="color: #cbd5e1 !important; font-weight: 600; font-size: 11px;">{details['cost']}</span>
+                    </div>
+                    <div class="meta-item" style="display: flex; flex-direction: column;">
+                        <span class="meta-label" style="color: #94a3b8 !important; font-size: 9px; text-transform: uppercase; font-weight: 500; margin-bottom: 2px;">{t['aqi_imp']}</span>
+                        <span class="meta-val" style="color: #4ade80 !important; font-weight: 700; font-size: 11px;">{details['imp']}</span>
+                    </div>
+                </div>
+            </div>""")
+        actions_html = f'<div class="actions-container">{"".join(actions_list_html)}</div>'
+        
+        rec_html = f"""
+        <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; height: 100%; display: flex; flex-direction: column; gap: 16px;">
+            <h4 style="margin: 0; color: #38bdf8; font-size: 16px; font-weight: 600; text-transform: uppercase; border-bottom: 1px solid #334155; padding-bottom: 12px;">{t['mun_decision']}</h4>
             <div>
-                <h4 style="margin: 0; color: #fca5a5; font-size: 16px; font-weight: bold;">{t['high_pollution_alert']}</h4>
-                <p style="margin: 4px 0 0 0; color: #e2e8f0; font-size: 14px;">{t['alert_msg'].format(ward_name=ward_name)}</p>
+                <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 12px;">{t['imm_actions']}</div>
+                {actions_html}
+            </div>
+            <div style="border-top: 1px dashed #334155; padding-top: 12px;">
+                <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 4px;">{t['exp_result']}</div>
+                <div style="font-size: 16px; font-weight: bold; color: #4ade80;">{t['aqi_imp']}: {spec['improvement']} <span style="font-size: 11px; font-weight: normal; color: #94a3b8;">{t['est_label']}</span></div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px; margin-top: auto;">
+                <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['priority']}</div><div style="font-weight: bold; font-size: 14px; color: {spec['priority_color']};">{spec['priority']}</div></div>
+                <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['citizens_impacted']}</div><div style="color: #f8fafc; font-weight: bold; font-size: 14px;">~{spec['citizens_impacted']:,} <span style="font-size: 11px; font-weight: normal; color: #94a3b8;">{t['est_label']}</span></div></div>
+                <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['resp_dept']}</div><div style="color: #f8fafc; font-weight: bold; font-size: 11px; line-height:1.2;">{spec['dept']}</div></div>
+                <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['timeline']}</div><div style="color: #f8fafc; font-weight: bold; font-size: 14px;">{spec['timeline']}</div></div>
+                <div style="grid-column: span 2;"><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['budget']}</div><div style="color: #4ade80; font-weight: bold; font-size: 14px;">{spec['budget']}</div></div>
             </div>
         </div>"""
 
-    # Fetch dynamic parameters
-    spec = get_station_specifics(station_name, latest_pm25, pred_cat)
-    
-    actions_list_html = []
-    for act in spec['actions']:
-        details = get_action_details(act)
-        actions_list_html.append(f"""
-        <div class="action-card" style="background: rgba(15, 23, 42, 0.5) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; border-radius: 8px !important; padding: 12px 16px !important; margin-bottom: 8px !important;">
-            <div class="action-header" style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px !important;">
-                <span class="action-icon" style="font-size: 16px;">{details['icon']}</span>
-                <span class="action-name" style="font-size: 13px; font-weight: 600; color: #f8fafc !important;">{act}</span>
+        bar_chart_html = "".join([f"<div style='display:flex; align-items:center; margin-bottom:8px;'><div style='width:70px; font-size:12px; color: white;'>{c}</div><div style='flex-grow:1; background:#334155; height:8px; border-radius:4px; margin:0 12px;'><div style='background:{AQI_COLORS.get(c, '#94a3b8')}; width:{p*100:.1f}%; height:100%; border-radius:4px;'></div></div><div style='width:40px; text-align:right; font-size:12px; color:white;'>{p*100:.0f}%</div></div>" for c, p in zip(classes, proba)])
+
+        pred_html = f"""
+        <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; height: 100%;">
+            <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 14px; font-weight: 600; text-transform: uppercase;">{t['forecast']}: {next_d.strftime("%d %b %Y")}</h4>
+            <div style="text-align: center; margin-bottom: 24px;">
+                <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase;">{t['prediction']}</div>
+                <div style="font-size: 32px; font-weight: bold; color: {color}; text-shadow: 0 0 10px {color}40;">{pred_cat}</div>
+                <div style="font-size: 14px; color: #4ade80; margin-top: 4px;">{t['confidence']}: {confidence:.1f}%</div>
             </div>
-            <div class="action-meta" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 8px !important;">
-                <div class="meta-item" style="display: flex; flex-direction: column;">
-                    <span class="meta-label" style="color: #94a3b8 !important; font-size: 9px; text-transform: uppercase; font-weight: 500; margin-bottom: 2px;">{t['priority']}</span>
-                    <span class="meta-val star-rating" style="color: #fbbf24 !important; font-weight: 700; font-size: 11px;">{details['impact']}</span>
+            <h5 style="margin: 0 0 12px 0; color: #94a3b8; font-size: 11px; font-weight: 600; text-transform: uppercase;">{t['class_probs']}</h5>
+            {bar_chart_html}
+        </div>"""
+
+        pm25_diff = latest_pm25 - yesterday_pm25
+        pm25_dir = "↑" if pm25_diff > 0 else "↓"
+        pm25_color = "#ef4444" if pm25_diff > 0 else "#22c55e"
+        
+        explain_html = f"""
+        <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; height: 100%;">
+            <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 14px; font-weight: 600; text-transform: uppercase;">🧠 {t['why_forecast']}</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                <div style="background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px;">
+                    <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['yesterday']}</div>
+                    <div style="font-size: 18px; font-weight: bold; color: {AQI_COLORS.get(yest_aqi_val, 'white')};">{yest_aqi_val}</div>
                 </div>
-                <div class="meta-item" style="display: flex; flex-direction: column;">
-                    <span class="meta-label" style="color: #94a3b8 !important; font-size: 9px; text-transform: uppercase; font-weight: 500; margin-bottom: 2px;">Cost</span>
-                    <span class="meta-val" style="color: #cbd5e1 !important; font-weight: 600; font-size: 11px;">{details['cost']}</span>
-                </div>
-                <div class="meta-item" style="display: flex; flex-direction: column;">
-                    <span class="meta-label" style="color: #94a3b8 !important; font-size: 9px; text-transform: uppercase; font-weight: 500; margin-bottom: 2px;">{t['aqi_imp']}</span>
-                    <span class="meta-val" style="color: #4ade80 !important; font-weight: 700; font-size: 11px;">{details['imp']}</span>
+                <div style="background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px;">
+                    <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['today']}</div>
+                    <div style="font-size: 18px; font-weight: bold; color: {current_col};">{current_aqi}</div>
                 </div>
             </div>
-        </div>""")
-    actions_html = f'<div class="actions-container">{"".join(actions_list_html)}</div>'
-    
-    rec_html = f"""
-    <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; height: 100%; display: flex; flex-direction: column; gap: 16px;">
-        <h4 style="margin: 0; color: #38bdf8; font-size: 16px; font-weight: 600; text-transform: uppercase; border-bottom: 1px solid #334155; padding-bottom: 12px;">{t['mun_decision']}</h4>
-        <div>
-            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 12px;">{t['imm_actions']}</div>
-            {actions_html}
-        </div>
-        <div style="border-top: 1px dashed #334155; padding-top: 12px;">
-            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 4px;">{t['exp_result']}</div>
-            <div style="font-size: 16px; font-weight: bold; color: #4ade80;">{t['aqi_imp']}: {spec['improvement']}</div>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px; margin-top: auto;">
-            <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['priority']}</div><div style="font-weight: bold; font-size: 14px; color: {spec['priority_color']};">{spec['priority']}</div></div>
-            <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['citizens_impacted']}</div><div style="color: #f8fafc; font-weight: bold; font-size: 14px;">~{spec['citizens_impacted']:,}</div></div>
-            <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['resp_dept']}</div><div style="color: #f8fafc; font-weight: bold; font-size: 11px; line-height:1.2;">{spec['dept']}</div></div>
-            <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['timeline']}</div><div style="color: #f8fafc; font-weight: bold; font-size: 14px;">{spec['timeline']}</div></div>
-            <div style="grid-column: span 2;"><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['budget']}</div><div style="color: #4ade80; font-weight: bold; font-size: 14px;">{spec['budget']}</div></div>
-        </div>
-    </div>"""
-
-    bar_chart_html = "".join([f"<div style='display:flex; align-items:center; margin-bottom:8px;'><div style='width:70px; font-size:12px; color: white;'>{c}</div><div style='flex-grow:1; background:#334155; height:8px; border-radius:4px; margin:0 12px;'><div style='background:{AQI_COLORS.get(c, '#94a3b8')}; width:{p*100:.1f}%; height:100%; border-radius:4px;'></div></div><div style='width:40px; text-align:right; font-size:12px; color:white;'>{p*100:.0f}%</div></div>" for c, p in zip(classes, proba)])
-
-    pred_html = f"""
-    <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; height: 100%;">
-        <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 14px; font-weight: 600; text-transform: uppercase;">{t['forecast']}: {next_d.strftime("%d %b %Y")}</h4>
-        <div style="text-align: center; margin-bottom: 24px;">
-            <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase;">{t['prediction']}</div>
-            <div style="font-size: 32px; font-weight: bold; color: {color}; text-shadow: 0 0 10px {color}40;">{pred_cat}</div>
-            <div style="font-size: 14px; color: #4ade80; margin-top: 4px;">{t['confidence']}: {confidence:.1f}%</div>
-        </div>
-        <h5 style="margin: 0 0 12px 0; color: #94a3b8; font-size: 11px; font-weight: 600; text-transform: uppercase;">{t['class_probs']}</h5>
-        {bar_chart_html}
-    </div>"""
-
-    pm25_diff = latest_pm25 - yesterday_pm25
-    pm25_dir = "↑" if pm25_diff > 0 else "↓"
-    pm25_color = "#ef4444" if pm25_diff > 0 else "#22c55e"
-    
-    explain_html = f"""
-    <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; height: 100%;">
-        <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 14px; font-weight: 600; text-transform: uppercase;">🧠 {t['why_forecast']}</h4>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-            <div style="background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px;">
-                <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['yesterday']}</div>
-                <div style="font-size: 18px; font-weight: bold; color: {AQI_COLORS.get(yest_aqi_val, 'white')};">{yest_aqi_val}</div>
+            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">{t['why_forecast']}</div>
+            <div style="font-size:13px; color:#cbd5e1; display:flex; flex-direction:column; gap:8px;">
+                <div style="display:flex; justify-content:space-between; color:#cbd5e1 !important;"><span>{t['pm25_trend']}</span> <span style="color:{pm25_color} !important; font-weight:600;">{pm25_dir} {abs(pm25_diff):.1f}</span></div>
+                <div style="display:flex; justify-content:space-between; color:#cbd5e1 !important;"><span>{t['primary_driver']}</span> <span style="color:#ef4444 !important; font-weight:600;">{spec['drivers'][0]}</span></div>
+                <div style="display:flex; justify-content:space-between; color:#cbd5e1 !important;"><span>{t['secondary_driver']}</span> <span style="color:#fbbf24 !important; font-weight:600;">{spec['drivers'][1]}</span></div>
+                <div style="display:flex; justify-content:space-between; color:#cbd5e1 !important;"><span>{t['background_factor']}</span> <span style="color:#38bdf8 !important; font-weight:600;">{spec['drivers'][2]}</span></div>
             </div>
-            <div style="background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px;">
-                <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['today']}</div>
-                <div style="font-size: 18px; font-weight: bold; color: {current_col};">{current_aqi}</div>
+        </div>"""
+
+        kpi_html = f"""
+        <div class="kpi-grid">
+            <div class="kpi-card" style="animation-delay: 0.05s;">
+                <div class="kpi-label">{t['kpi_current_aqi']}</div>
+                <div class="kpi-val" style="color: {current_col};">{current_aqi}</div>
+            </div>
+            <div class="kpi-card" style="animation-delay: 0.1s;">
+                <div class="kpi-label">{t['kpi_latest_pm']}</div>
+                <div class="kpi-val" style="color: #f8fafc;">{latest_pm25:.1f} <span style="font-size: 12px; color: #64748b;">µg/m³</span></div>
+            </div>
+            <div class="kpi-card" style="animation-delay: 0.15s;">
+                <div class="kpi-label">{t['kpi_forecast']}</div>
+                <div class="kpi-val" style="color: {color};">{pred_cat}</div>
+            </div>
+            <div class="kpi-card" style="animation-delay: 0.2s;">
+                <div class="kpi-label">{t['kpi_aqi_reduction']}</div>
+                <div class="kpi-val" style="color: #4ade80;">{spec['improvement']} <span style="font-size: 12px; color: #64748b; font-weight: normal;">{t['est_label']}</span></div>
+            </div>
+            <div class="kpi-card" style="animation-delay: 0.25s;">
+                <div class="kpi-label">{t['kpi_confidence']}</div>
+                <div class="kpi-val" style="color: #38bdf8;">{confidence:.1f}%</div>
+            </div>
+            <div class="kpi-card" style="animation-delay: 0.3s;">
+                <div class="kpi-label">{t['kpi_hotspots']}</div>
+                <div class="kpi-val" style="color: #ef4444;">2 <span style="font-size: 12px; color: #64748b;">{t['active']}</span></div>
             </div>
         </div>
-        <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">{t['why_forecast']}</div>
-        <div style="font-size:13px; color:#cbd5e1; display:flex; flex-direction:column; gap:8px;">
-            <div style="display:flex; justify-content:space-between; color:#cbd5e1 !important;"><span>{t['pm25_trend']}</span> <span style="color:{pm25_color} !important; font-weight:600;">{pm25_dir} {abs(pm25_diff):.1f}</span></div>
-            <div style="display:flex; justify-content:space-between; color:#cbd5e1 !important;"><span>{t['primary_driver']}</span> <span style="color:#ef4444 !important; font-weight:600;">{spec['drivers'][0]}</span></div>
-            <div style="display:flex; justify-content:space-between; color:#cbd5e1 !important;"><span>{t['secondary_driver']}</span> <span style="color:#fbbf24 !important; font-weight:600;">{spec['drivers'][1]}</span></div>
-            <div style="display:flex; justify-content:space-between; color:#cbd5e1 !important;"><span>{t['background_factor']}</span> <span style="color:#38bdf8 !important; font-weight:600;">{spec['drivers'][2]}</span></div>
-        </div>
-    </div>"""
+        """
 
-    kpi_html = f"""
-    <div class="kpi-grid">
-        <div class="kpi-card" style="animation-delay: 0.05s;">
-            <div class="kpi-label">{t['kpi_current_aqi']}</div>
-            <div class="kpi-val" style="color: {current_col};">{current_aqi}</div>
-        </div>
-        <div class="kpi-card" style="animation-delay: 0.1s;">
-            <div class="kpi-label">{t['kpi_latest_pm']}</div>
-            <div class="kpi-val" style="color: #f8fafc;">{latest_pm25:.1f} <span style="font-size: 12px; color: #64748b;">µg/m³</span></div>
-        </div>
-        <div class="kpi-card" style="animation-delay: 0.15s;">
-            <div class="kpi-label">{t['kpi_forecast']}</div>
-            <div class="kpi-val" style="color: {color};">{pred_cat}</div>
-        </div>
-        <div class="kpi-card" style="animation-delay: 0.2s;">
-            <div class="kpi-label">{t['kpi_aqi_reduction']}</div>
-            <div class="kpi-val" style="color: #4ade80;">{spec['improvement']}</div>
-        </div>
-        <div class="kpi-card" style="animation-delay: 0.25s;">
-            <div class="kpi-label">{t['kpi_confidence']}</div>
-            <div class="kpi-val" style="color: #38bdf8;">{confidence:.1f}%</div>
-        </div>
-        <div class="kpi-card" style="animation-delay: 0.3s;">
-            <div class="kpi-label">{t['kpi_hotspots']}</div>
-            <div class="kpi-val" style="color: #ef4444;">2 <span style="font-size: 12px; color: #64748b;">{t['active']}</span></div>
-        </div>
-    </div>
-    """
-
-    return trend_fig, gauge_fig, pred_html, rec_html, alert_html, kpi_html, explain_html
+        return trend_fig, gauge_fig, pred_html, rec_html, alert_html, kpi_html, explain_html
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        import plotly.graph_objects as go
+        err_fig = go.Figure()
+        err_fig.update_layout(title="Error Loading Chart")
+        err_html = f"<div style='color: #ef4444; padding: 12px; background: rgba(239,68,68,0.1); border-radius: 8px;'><b>Error in Analytics:</b><br>{str(e)}</div>"
+        return err_fig, err_fig, err_html, "", "", "", ""
 
 def get_hotspot_table_html():
     rows = ""
@@ -1135,44 +1265,53 @@ with gr.Blocks(title="AirGuard AI", css=custom_css, theme=gr.themes.Base()) as d
 
     # Helper function for forecast tab prediction
     def make_forecast_prediction(station_name, lang="English"):
-        t = DYNAMIC_TRANSLATIONS.get(lang, DYNAMIC_TRANSLATIONS["English"])
-        trend_fig = plot_trend(station_name)
-        wrow = ward_df[ward_df['station'] == station_name]
-        if wrow.empty: return trend_fig, go.Figure(), f"<p>{t['not_found']}</p>"
-        ward_name = wrow.iloc[0]['ward_name']
-        station_history = ts_daily[ts_daily['station'] == station_name].copy()
-        max_date = station_history['date'].max() if len(station_history) > 0 else pd.NaT
-        if pd.isna(max_date): return trend_fig, go.Figure(), f"<p>{t['no_data']}</p>"
-        
-        today = max_date
-        latest_pm25 = station_history.sort_values('date').iloc[-1]['pm25']
-        gauge_fig = plot_gauge(latest_pm25)
-        
-        X, err = build_feature_row(station_name, today, ward_name, station_history)
-        if X is None: return trend_fig, gauge_fig, f"<p>Error: {err}</p>"
-        
-        proba = rf_model.predict_proba(X)[0]
-        classes = list(rf_model.classes_)
-        pred_idx = int(np.argmax(proba))
-        pred_cat = classes[pred_idx]
-        confidence = float(proba[pred_idx]) * 100
-        color = AQI_COLORS[pred_cat]
-        next_d = today + datetime.timedelta(days=1)
-        
-        bar_chart_html = "".join([f"<div style='display:flex; align-items:center; margin-bottom:8px;'><div style='width:70px; font-size:12px; color: white;'>{c}</div><div style='flex-grow:1; background:#334155; height:8px; border-radius:4px; margin:0 12px;'><div style='background:{AQI_COLORS.get(c, '#94a3b8')}; width:{p*100:.1f}%; height:100%; border-radius:4px;'></div></div><div style='width:40px; text-align:right; font-size:12px; color:white;'>{p*100:.0f}%</div></div>" for c, p in zip(classes, proba)])
-        
-        pred_html = f"""
-        <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; height: 100%;">
-            <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 14px; font-weight: 600; text-transform: uppercase;">{t['forecast']}: {next_d.strftime("%d %b %Y")}</h4>
-            <div style="text-align: center; margin-bottom: 24px;">
-                <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase;">{t['prediction']}</div>
-                <div style="font-size: 32px; font-weight: bold; color: {color}; text-shadow: 0 0 10px {color}40;">{pred_cat}</div>
-                <div style="font-size: 14px; color: #4ade80; margin-top: 4px;">{t['confidence']}: {confidence:.1f}%</div>
-            </div>
-            <h5 style="margin: 0 0 12px 0; color: #94a3b8; font-size: 11px; font-weight: 600; text-transform: uppercase;">{t['class_probs']}</h5>
-            {bar_chart_html}
-        </div>"""
-        return trend_fig, gauge_fig, pred_html
+        try:
+            t = DYNAMIC_TRANSLATIONS.get(lang, DYNAMIC_TRANSLATIONS["English"])
+            trend_fig = plot_trend(station_name)
+            wrow = ward_df[ward_df['station'] == station_name]
+            if wrow.empty: return trend_fig, go.Figure(), f"<p>{t['not_found']}</p>"
+            ward_name = wrow.iloc[0]['ward_name']
+            station_history = ts_daily[ts_daily['station'] == station_name].copy()
+            max_date = station_history['date'].max() if len(station_history) > 0 else pd.NaT
+            if pd.isna(max_date): return trend_fig, go.Figure(), f"<p>{t['no_data']}</p>"
+            
+            today = max_date
+            latest_pm25 = station_history.sort_values('date').iloc[-1]['pm25']
+            gauge_fig = plot_gauge(latest_pm25)
+            
+            X, err = build_feature_row(station_name, today, ward_name, station_history)
+            if X is None: return trend_fig, gauge_fig, f"<p>Error: {err}</p>"
+            
+            proba = rf_model.predict_proba(X)[0]
+            classes = list(rf_model.classes_)
+            pred_idx = int(np.argmax(proba))
+            pred_cat = classes[pred_idx]
+            confidence = float(proba[pred_idx]) * 100
+            color = AQI_COLORS[pred_cat]
+            next_d = today + datetime.timedelta(days=1)
+            
+            bar_chart_html = "".join([f"<div style='display:flex; align-items:center; margin-bottom:8px;'><div style='width:70px; font-size:12px; color: white;'>{c}</div><div style='flex-grow:1; background:#334155; height:8px; border-radius:4px; margin:0 12px;'><div style='background:{AQI_COLORS.get(c, '#94a3b8')}; width:{p*100:.1f}%; height:100%; border-radius:4px;'></div></div><div style='width:40px; text-align:right; font-size:12px; color:white;'>{p*100:.0f}%</div></div>" for c, p in zip(classes, proba)])
+            
+            pred_html = f"""
+            <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; height: 100%;">
+                <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 14px; font-weight: 600; text-transform: uppercase;">{t['forecast']}: {next_d.strftime("%d %b %Y")}</h4>
+                <div style="text-align: center; margin-bottom: 24px;">
+                    <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase;">{t['prediction']}</div>
+                    <div style="font-size: 32px; font-weight: bold; color: {color}; text-shadow: 0 0 10px {color}40;">{pred_cat}</div>
+                    <div style="font-size: 14px; color: #4ade80; margin-top: 4px;">{t['confidence']}: {confidence:.1f}%</div>
+                </div>
+                <h5 style="margin: 0 0 12px 0; color: #94a3b8; font-size: 11px; font-weight: 600; text-transform: uppercase;">{t['class_probs']}</h5>
+                {bar_chart_html}
+            </div>"""
+            return trend_fig, gauge_fig, pred_html
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            import plotly.graph_objects as go
+            err_fig = go.Figure()
+            err_fig.update_layout(title="Error Loading Chart")
+            err_html = f"<div style='color: #ef4444; padding: 12px; background: rgba(239,68,68,0.1); border-radius: 8px;'><b>Error in Forecast:</b><br>{str(e)}</div>"
+            return err_fig, err_fig, err_html
 
     # Events for Dashboard tab
     run_btn.click(fn=lambda: gr.update(value="Analyzing...", interactive=False), outputs=[run_btn]).then(
