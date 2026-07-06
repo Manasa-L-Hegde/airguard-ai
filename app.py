@@ -960,7 +960,7 @@ with gr.Blocks(title="AirGuard AI", css=custom_css, theme=gr.themes.Base()) as d
         gr.Markdown("") # Spacing
 
     
-    gr.HTML("""
+    top_bar = gr.HTML("""
     <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #1E293B; margin-bottom: 20px;">
         <div style="display:flex; align-items:center; gap: 8px;">
             <div style="width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e;"></div>
@@ -968,6 +968,9 @@ with gr.Blocks(title="AirGuard AI", css=custom_css, theme=gr.themes.Base()) as d
         </div>
         <div style="color: #64748b; font-size: 12px; font-weight: 500;">Accuracy: 58.4% | Avg. Latency: 0.43s</div>
     </div>
+    """)
+    
+    hero_section = gr.HTML("""
     <div class="hero-section">
         <h1 class="hero-title">AirGuard AI</h1>
         <p style="font-size: 18px; color: #cbd5e1; max-width: 600px; margin: 0 0 8px 0; font-weight: 500;">AI-Powered Urban Pollution Intelligence Platform</p>
@@ -976,7 +979,7 @@ with gr.Blocks(title="AirGuard AI", css=custom_css, theme=gr.themes.Base()) as d
     </div>
     """)
     
-    gr.HTML("""
+    exec_summary = gr.HTML("""
     <div class="dark-card" style="background: rgba(239, 68, 68, 0.1) !important; border: 1px solid #ef4444 !important; margin-bottom: 24px;">
         <h3 style="color: #ef4444; margin: 0 0 12px 0; font-size: 18px; font-weight: bold;">Executive Impact Summary</h3>
         <div style="display: flex; gap: 40px; flex-wrap: wrap;">
