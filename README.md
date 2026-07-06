@@ -82,7 +82,17 @@ airguard-ai/
 
 ---
 
-## 💻 7. Setup & Run Locally
+## 📸 7. Screenshots
+
+### Executive Summary Grid & Upgraded UI
+![AirGuard AI Dashboard Top Half](https://raw.githubusercontent.com/Manasa-L-Hegde/airguard-ai/main/screenshots/airguard_hero_metrics_1783267505484.png)
+
+### Model Forecasts, AI Explanations & Action Cards
+![AirGuard AI Action Cards and Details](https://raw.githubusercontent.com/Manasa-L-Hegde/airguard-ai/main/screenshots/dashboard_recommendations_1783267930581.png)
+
+---
+
+## 💻 8. Setup & Run Locally
 
 ### Prerequisites
 * Python 3.11 or 3.12
@@ -117,18 +127,19 @@ airguard-ai/
 
 ---
 
-## 🌐 8. Live Demo
+## 🌐 9. Live Demo
 Explore the interactive model predictions, hotspot clusters, and explainable decision-support cards live on Hugging Face Spaces:
 👉 **[AirGuard AI Live Web App](https://huggingface.co/spaces/manasahegde/airguard.ai)**
 
 ---
 
-## 👥 9. Team & Acknowledgments
+## 👥 10. Team & Acknowledgments
 * **Team Name**: DataPulse
 * Built with 💙 for the Google **Code for Communities 2026** Hackathon / Hack2Skill.
 * Calibration air quality datasets sourced from the Central Pollution Control Board (CPCB) and Karnataka State Pollution Control Board (KSPCB).
 
 ---
 
-## 📄 10. License
+## 📄 11. License
 This project is licensed under the MIT License - see the `LICENSE` file for details.
+
