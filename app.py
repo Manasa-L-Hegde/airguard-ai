@@ -56,6 +56,280 @@ import gradio as gr
 import plotly.graph_objects as go
 import plotly.express as px
 
+
+STATIC_TRANSLATIONS = {
+    "English": {
+        "live_indicator": "🟢 Live | 15 sec ago | 14 Stations",
+        "accuracy_latency": "Accuracy: 58.4% | Avg. Latency: 0.43s",
+        "hero_title": "AirGuard AI",
+        "hero_subtitle": "Predict Pollution Before It Happens",
+        "hero_desc": "AI-powered Decision Support System for Smart Cities. Helping municipal authorities identify and mitigate pollution hotspots before air quality reaches critical thresholds.",
+        "explore_btn": "Explore Dashboard",
+        "summary_title": "📊 Executive Impact Summary",
+        "summary_hotspots": "🚨 Critical Hotspots",
+        "summary_citizens": "👥 Citizens at Risk",
+        "summary_reduction": "📉 Expected AQI Reduction",
+        "summary_alerts": "⚠️ Today\'s Wards Alerts",
+        "summary_accuracy": "🎯 Prediction Accuracy",
+        "summary_confidence": "🧠 Model Confidence",
+        "station_selector_lbl": "Search / Select Station",
+        "analyze_btn": "Analyze Data",
+        "forecast_btn": "Fetch Forecast",
+        "submit_report_btn": "Submit Report",
+        "report_station_lbl": "Nearest Monitoring Station",
+        "incident_type_lbl": "Incident Type",
+        "img_upload_lbl": "Upload Image Proof (Optional)",
+        "citizen_title": "Submit Local Incident",
+        "citizen_analytics_title": "Today\'s Citizen Analytics",
+        "garbage_burning": "Garbage Burning",
+        "construction_dust": "Construction Dust",
+        "industrial_smoke": "Industrial Smoke"
+    },
+    "ಕನ್ನಡ": {
+        "live_indicator": "🟢 ಲೈವ್ | 15 ಸೆಕೆಂಡುಗಳ ಹಿಂದೆ | 14 ನಿಲ್ದಾಣಗಳು",
+        "accuracy_latency": "ನಿಖರತೆ: 58.4% | ಸರಾವರಿ ವಿಳಂಬ ಸಮಯ: 0.43 ಸೆ",
+        "hero_title": "ಏರ್-ಗಾರ್ಡ್ AI",
+        "hero_subtitle": "ಮಾಲಿನ್ಯವನ್ನು ಸಂಭವಿಸುವ ಮುನ್ನವೇ ಊಹಿಸಿ",
+        "hero_desc": "ಸ್ಮಾರ್ಟ್ ಸಿಟಿಗಳಿಗಾಗಿ AI-ಆಧಾರಿತ ನಿರ್ಧಾರ ಬೆಂಬಲ ವ್ಯವಸ್ಥೆ. ಗಾಳಿಯ ಗುಣಮಟ್ಟವು ಗಂಭೀರ ಮಟ್ಟ ತಲುಪುವ ಮುನ್ನವೇ ಮಾಲಿನ್ಯದ ಹಾಟ್‌ಸ್ಪಾಟ್‌ಗಳನ್ನು ಗುರುತಿಸಲು ನೆರವಾಗುತ್ತದೆ.",
+        "explore_btn": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ಅನ್ವೇಷಿಸಿ",
+        "summary_title": "📊 ಕಾರ್ಯನಿರ್ವಾಹಕ ಪ್ರಭಾವದ ಸಾರಾಂಶ",
+        "summary_hotspots": "🚨 ಕ್ಲಿಷ್ಟಕರ ಹಾಟ್‌ಸ್ಪಾಟ್‌ಗಳು",
+        "summary_citizens": "👥 ಅಪಾಯದಲ್ಲಿರುವ ನಾಗರಿಕರು",
+        "summary_reduction": "📉 ನಿರೀಕ್ಷಿತ AQI ಕಡಿತ",
+        "summary_alerts": "⚠️ ಇಂದಿನ ವಾರ್ಡ್ ಎಚ್ಚರಿಕೆಗಳು",
+        "summary_accuracy": "🎯 ಮುನ್ಸೂಚನೆ ನಿಖರತೆ",
+        "summary_confidence": "🧠 ಮಾದರಿ ವಿಶ್ವಾಸಾರ್ಹತೆ",
+        "station_selector_lbl": "ನಿಲ್ದಾಣವನ್ನು ಹುಡುಕಿ / ಆಯ್ಕೆ ಮಾಡಿ",
+        "analyze_btn": "ಡೇಟಾ ವಿಶ್ಲೇಷಿಸಿ",
+        "forecast_btn": "ಮುನ್ಸೂಚನೆ ಪಡೆಯಿರಿ",
+        "submit_report_btn": "ವರದಿ ಸಲ್ಲಿಸಿ",
+        "report_station_lbl": "ಹತ್ತಿರದ ಮಾನಿಟರಿಂಗ್ ನಿಲ್ದಾಣ",
+        "incident_type_lbl": "ಘಟನೆಯ ಪ್ರಕಾರ",
+        "img_upload_lbl": "ಚಿತ್ರ ಪುರಾವೆ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ (ಐಚ್ಛಿಕ)",
+        "citizen_title": "ಸ್ಥಳೀಯ ಘಟನೆಯನ್ನು ವರದಿ ಮಾಡಿ",
+        "citizen_analytics_title": "ಇಂದಿನ ನಾಗರಿಕ ವಿಶ್ಲೇಷಣೆ",
+        "garbage_burning": "ಕಸ ಸುಡುವುದು",
+        "construction_dust": "ಕಟ್ಟಡ ನಿರ್ಮಾಣ ಧೂಳು",
+        "industrial_smoke": "ಕೈಗಾರಿಕಾ ಹೊಗೆ"
+    },
+    "हिंदी": {
+        "live_indicator": "🟢 लाइव | 15 सेकंड पहले | 14 स्टेशन",
+        "accuracy_latency": "सटीकता: 58.4% | औसत विलंबता: 0.43s",
+        "hero_title": "एयरगार्ड AI",
+        "hero_subtitle": "प्रदूषण होने से पहले ही उसका पूर्वानुमान लगाएं",
+        "hero_desc": "स्मार्ट शहरों के लिए AI-संचालित निर्णय सहायता प्रणाली। वायु गुणवत्ता गंभीर स्तर पर पहुंचने से पहले प्रदूषण हॉटस्पॉट की पहचान करने में मदद करता है।",
+        "explore_btn": "डैशबोर्ड का अन्वेषण करें",
+        "summary_title": "📊 कार्यकारी प्रभाव सारांश",
+        "summary_hotspots": "🚨 गंभीर हॉटस्पॉट",
+        "summary_citizens": "👥 खतरे में नागरिक",
+        "summary_reduction": "📉 संभावित AQI सुधार",
+        "summary_alerts": "⚠️ आज की वार्ड चेतावनी",
+        "summary_accuracy": "🎯 पूर्वानुमान सटीकता",
+        "summary_confidence": "🧠 मॉडल विश्वसनीयता",
+        "station_selector_lbl": "स्टेशन खोजें या चुनें",
+        "analyze_btn": "डेटा विश्लेषण करें",
+        "forecast_btn": "पूर्वानुमान प्राप्त करें",
+        "submit_report_btn": "रिपोर्ट जमा करें",
+        "report_station_lbl": "निकटतम निगरानी स्टेशन",
+        "incident_type_lbl": "घटना का प्रकार",
+        "img_upload_lbl": "छवि प्रमाण अपलोड करें (वैकल्पिक)",
+        "citizen_title": "स्थानीय घटना सबमिट करें",
+        "citizen_analytics_title": "आज का नागरिक विश्लेषण",
+        "garbage_burning": "कचरा जलाना",
+        "construction_dust": "निर्माण धूल",
+        "industrial_smoke": "औद्योगिक धुआं"
+    }
+}
+
+DYNAMIC_TRANSLATIONS = {
+    "English": {
+        "forecast": "Forecast",
+        "prediction": "Prediction",
+        "confidence": "Confidence",
+        "class_probs": "Class Probabilities",
+        "high_pollution_alert": "High Pollution Alert",
+        "alert_msg": "AQI is severe in {ward_name}. Avoid outdoor activities.",
+        "mun_decision": "🏛️ Municipal Decision Support",
+        "imm_actions": "Immediate Action Recommendations",
+        "exp_result": "Expected Result",
+        "aqi_imp": "AQI Improvement",
+        "priority": "Priority",
+        "citizens_impacted": "Est. Citizens Impacted",
+        "resp_dept": "Responsible Dept",
+        "timeline": "Action Timeline",
+        "budget": "Estimated Budget",
+        "yesterday": "Yesterday",
+        "today": "Today",
+        "why_forecast": "Why this forecast?",
+        "pm25_trend": "PM2.5 Trend",
+        "primary_driver": "Primary Driver",
+        "secondary_driver": "Secondary Driver",
+        "background_factor": "Background Factor",
+        "kpi_current_aqi": "🌿 Current AQI",
+        "kpi_latest_pm": "🌫️ Latest PM2.5",
+        "kpi_forecast": "📈 Forecast",
+        "kpi_aqi_reduction": "📉 Est. AQI Reduction",
+        "kpi_confidence": "📊 Prediction Confidence",
+        "kpi_hotspots": "🚨 Hotspot Zones",
+        "active": "Active",
+        "unknown": "Unknown",
+        "not_found": "Station not found.",
+        "no_data": "No data available."
+    },
+    "ಕನ್ನಡ": {
+        "forecast": "ಮುನ್ಸೂಚನೆ",
+        "prediction": "ಮುನ್ಸೂಚನೆ",
+        "confidence": "ವಿಶ್ವಾಸಾರ್ಹತೆ",
+        "class_probs": "ವರ್ಗದ ಸಂಭಾವ್ಯತೆಗಳು",
+        "high_pollution_alert": "ಹೆಚ್ಚಿನ ಮಾಲಿನ್ಯ ಎಚ್ಚರಿಕೆ",
+        "alert_msg": "{ward_name} ವಾರ್ಡ್‌ನಲ್ಲಿ ಗಾಳಿ ಗುಣಮಟ್ಟ ಕಳಪೆಯಾಗಿದೆ. ಹೊರಾಂಗಣ ಚಟುವಟಿಕೆ ತಡೆಯಿರಿ.",
+        "mun_decision": "🏛️ ಪುರಸಭೆ ನಿರ್ಧಾರ ಬೆಂಬಲ",
+        "imm_actions": "ತಕ್ಷಣದ ಕ್ರಮದ ಶಿಫಾರಸುಗಳು",
+        "exp_result": "ನಿರೀಕ್ಷಿತ ಫಲಿತಾಂಶ",
+        "aqi_imp": "AQI ಸುಧಾರಣೆ",
+        "priority": "ಆದ್ಯತೆ",
+        "citizens_impacted": "ಅಂದಾಜು ನಾಗರಿಕರ ಮೇಲೆ ಪ್ರಭಾವ",
+        "resp_dept": "ಜವಾಬ್ದಾರಿಯುತ ಇಲಾಖೆ",
+        "timeline": "ಕ್ರಮದ ಕಾಲಮಿತಿ",
+        "budget": "ಅಂದಾಜು ಬಜೆಟ್",
+        "yesterday": "ನಿನ್ನೆ",
+        "today": "ಇಂದು",
+        "why_forecast": "ಈ ಮುನ್ಸೂಚನೆಗೆ ಕಾರಣವೇನು?",
+        "pm25_trend": "PM2.5 ಪ್ರವೃತ್ತಿ",
+        "primary_driver": "ಮುಖ್ಯ ಕಾರಣ",
+        "secondary_driver": "ದ್ವಿತೀಯ ಕಾರಣ",
+        "background_factor": "ಹಿನ್ನೆಲೆ ಅಂಶ",
+        "kpi_current_aqi": "🌿 ಪ್ರಸ್ತುತ AQI",
+        "kpi_latest_pm": "🌫️ ಇತ್ತೀಚಿನ PM2.5",
+        "kpi_forecast": "📈 ಮುನ್ಸೂಚನೆ",
+        "kpi_aqi_reduction": "📉 ಅಂದಾಜು AQI ಕಡಿತ",
+        "kpi_confidence": "📊 ಮುನ್ಸೂಚನೆ ವಿಶ್ವಾಸಾರ್ಹತೆ",
+        "kpi_hotspots": "🚨 ಹಾಟ್‌ಸ್ಪಾಟ್‌ಗಳು",
+        "active": "ಸಕ್ರಿಯ",
+        "unknown": "ತಿಳಿದಿಲ್ಲ",
+        "not_found": "ನಿಲ್ದಾಣ ಕಂಡುಬಂದಿಲ್ಲ.",
+        "no_data": "ಡೇಟಾ ಲಭ್ಯವಿಲ್ಲ."
+    },
+    "हिंदी": {
+        "forecast": "पूर्वानुमान",
+        "prediction": "पूर्वानुमान",
+        "confidence": "विश्वसनीयता",
+        "class_probs": "वर्ग संभावनाएं",
+        "high_pollution_alert": "उच्च प्रदूषण चेतावनी",
+        "alert_msg": "{ward_name} में वायु गुणवत्ता गंभीर है। बाहरी गतिविधियों से बचें।",
+        "mun_decision": "🏛️ नगर पालिका निर्णय सहायता",
+        "imm_actions": "तत्काल कार्रवाई की सिफारिशें",
+        "exp_result": "अपेक्षित परिणाम",
+        "aqi_imp": "AQI सुधार",
+        "priority": "प्राथमिकता",
+        "citizens_impacted": "प्रभावित नागरिक (अनुमानित)",
+        "resp_dept": "जिम्मेदार विभाग",
+        "timeline": "कार्रवाई की समय सीमा",
+        "budget": "अनुमानित बजट",
+        "yesterday": "कल",
+        "today": "आज",
+        "why_forecast": "यह पूर्वानुमान क्यों?",
+        "pm25_trend": "PM2.5 प्रवृत्ति",
+        "primary_driver": "प्राथमिक कारक",
+        "secondary_driver": "द्वितीयक कारक",
+        "background_factor": "पृष्ठभूमि कारक",
+        "kpi_current_aqi": "🌿 वर्तमान AQI",
+        "kpi_latest_pm": "🌫️ नवीनतम PM2.5",
+        "kpi_forecast": "📈 पूर्वानुमान",
+        "kpi_aqi_reduction": "📉 अनुमानित AQI कमी",
+        "kpi_confidence": "📊 पूर्वानुमान विश्वसनीयता",
+        "kpi_hotspots": "🚨 हॉटस्पॉट",
+        "active": "सक्रिय",
+        "unknown": "अज्ञात",
+        "not_found": "स्टेशन नहीं मिला।",
+        "no_data": "डेटा उपलब्ध नहीं है।"
+    }
+}
+
+def change_language(lang):
+    t = STATIC_TRANSLATIONS[lang]
+    top_bar_html = f"""
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #1E293B; margin-bottom: 20px;">
+        <div style="display:flex; align-items:center; gap: 8px;">
+            <div style="width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e;"></div>
+            <div style="color: #cbd5e1; font-weight: bold; font-size: 13px; text-transform: uppercase;">{t['live_indicator']}</div>
+        </div>
+        <div style="color: #64748b; font-size: 12px; font-weight: 500;">{t['accuracy_latency']}</div>
+    </div>"""
+    
+    hero_html = f"""
+    <div class="hero-section">
+        <h1 class="hero-title">{t['hero_title']}</h1>
+        <p class="hero-subtitle">{t['hero_subtitle']}</p>
+        <p style="font-size: 18px; color: #cbd5e1; max-width: 700px; margin: 0 0 24px 0; font-weight: 400; line-height: 1.5;">
+            {t['hero_desc']}
+        </p>
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+            <button class="hero-cta-btn" onclick="document.getElementById(\'station-selector\').scrollIntoView({{behavior: \'smooth\'}})">{t['explore_btn']}</button>
+            <div style="color: #60a5fa; font-weight: 600; letter-spacing: 1.5px; font-size: 13px; text-transform: uppercase;">
+                🌿 Predict • 🚨 Detect • 🧠 Explain • 🏛️ Recommend
+            </div>
+        </div>
+    </div>"""
+    
+    exec_html = f"""
+    <div class="executive-summary-card">
+        <h3 class="summary-title">{t['summary_title']}</h3>
+        <div class="summary-grid">
+            <div class="summary-item">
+                <div class="summary-label">{t['summary_hotspots']}</div>
+                <div class="summary-val">2 Zones</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">{t['summary_citizens']}</div>
+                <div class="summary-val">68,000+</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">{t['summary_reduction']}</div>
+                <div class="summary-val green-text">18% Avg</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">{t['summary_alerts']}</div>
+                <div class="summary-val red-text">6 Wards</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">{t['summary_accuracy']}</div>
+                <div class="summary-val blue-text">58.4%</div>
+            </div>
+            <div class="summary-item">
+                <div class="summary-label">{t['summary_confidence']}</div>
+                <div class="summary-val purple-text">74.2%</div>
+            </div>
+        </div>
+    </div>"""
+    
+    citizen_analytics_html = f"""
+    <h3 style=\'color: white; margin: 0 0 16px 0; font-weight: bold;\'>{t['citizen_analytics_title']}</h3>
+    <div style=\'display:flex; gap:20px; flex-wrap:wrap;\'>
+        <div style=\'background:#0f172a; padding:20px; border-radius:12px; flex:1; text-align:center; border: 1px solid #334155;\'><h2 style=\'margin:0; color:#ef4444; font-size: 32px;\'>12</h2><div style=\'color:#94a3b8; font-size:12px; margin-top:4px;\'>{t['garbage_burning']}</div></div>
+        <div style=\'background:#0f172a; padding:20px; border-radius:12px; flex:1; text-align:center; border: 1px solid #334155;\'><h2 style=\'margin:0; color:#eab308; font-size: 32px;\'>8</h2><div style=\'color:#94a3b8; font-size:12px; margin-top:4px;\'>{t['construction_dust']}</div></div>
+        <div style=\'background:#0f172a; padding:20px; border-radius:12px; flex:1; text-align:center; border: 1px solid #334155;\'><h2 style=\'margin:0; color:#8b5cf6; font-size: 32px;\'>4</h2><div style=\'color:#94a3b8; font-size:12px; margin-top:4px;\'>{t['industrial_smoke']}</div></div>
+    </div>
+    <div style="margin-top: 24px; padding: 16px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+        <h4 style="color: #38bdf8; margin: 0 0 8px 0;">Analytical Observations</h4>
+        <p style=\'color:#cbd5e1; margin:0; font-size:14px; line-height: 1.5;\'>Recent reports indicate a 30% increase in localized garbage burning in Ward areas without active solid waste collection today. This corresponds directly with localized PM2.5 spikes.</p>
+    </div>"""
+    
+    return (
+        top_bar_html,
+        hero_html,
+        exec_html,
+        gr.update(label=t['station_selector_lbl']),
+        gr.update(value=t['analyze_btn']),
+        gr.update(label=t['station_selector_lbl']),
+        gr.update(value=t['forecast_btn']),
+        gr.update(label=t['report_station_lbl']),
+        gr.update(label=t['incident_type_lbl']),
+        gr.update(label=t['img_upload_lbl']),
+        gr.update(value=t['submit_report_btn']),
+        citizen_analytics_html
+    )
+
 # ── Paths ─────────────────────────────────────────────────────────────────────
 BASE_DIR     = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH   = os.path.join(BASE_DIR, 'models', 'aqi_category_rf.pkl')
@@ -443,16 +717,17 @@ def submit_citizen_report(incident_type, station, file_path):
     <p style='margin: 0; color: #e2e8f0;'>Reference ID: <b>{ref_id}</b></p>
     </div>"""
 
-def make_prediction(station_name):
+def make_prediction(station_name, lang="English"):
+    t = DYNAMIC_TRANSLATIONS.get(lang, DYNAMIC_TRANSLATIONS["English"])
     trend_fig = plot_trend(station_name)
     wrow = ward_df[ward_df['station'] == station_name]
-    if wrow.empty: return trend_fig, go.Figure(), "<p>Station not found.</p>", "", "", "", ""
+    if wrow.empty: return trend_fig, go.Figure(), f"<p>{t['not_found']}</p>", "", "", "", ""
         
     ward_name = wrow.iloc[0]['ward_name']
     station_history = ts_daily[ts_daily['station'] == station_name].copy()
     max_date = station_history['date'].max() if len(station_history) > 0 else pd.NaT
 
-    if pd.isna(max_date): return trend_fig, go.Figure(), "<p>No data.</p>", "", "", "", ""
+    if pd.isna(max_date): return trend_fig, go.Figure(), f"<p>{t['no_data']}</p>", "", "", "", ""
 
     today = max_date
     yesterday = today - datetime.timedelta(days=1)
@@ -484,33 +759,57 @@ def make_prediction(station_name):
         <div style="background: rgba(239, 68, 68, 0.15); border-left: 4px solid #ef4444; padding: 16px; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 12px;">
             <div style="font-size: 24px;">🚨</div>
             <div>
-                <h4 style="margin: 0; color: #fca5a5; font-size: 16px; font-weight: bold;">High Pollution Alert</h4>
-                <p style="margin: 4px 0 0 0; color: #e2e8f0; font-size: 14px;">AQI is severe in {ward_name}. Avoid outdoor activities.</p>
+                <h4 style="margin: 0; color: #fca5a5; font-size: 16px; font-weight: bold;">{t['high_pollution_alert']}</h4>
+                <p style="margin: 4px 0 0 0; color: #e2e8f0; font-size: 14px;">{t['alert_msg'].format(ward_name=ward_name)}</p>
             </div>
         </div>"""
 
     # Fetch dynamic parameters
     spec = get_station_specifics(station_name, latest_pm25, pred_cat)
     
-    actions_html = "".join([f"<div style='display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:13px; color:#cbd5e1;'><span style='color:#38bdf8; font-weight:bold;'>✓</span><span>{act}</span></div>" for act in spec['actions']])
+    actions_list_html = []
+    for act in spec['actions']:
+        details = get_action_details(act)
+        actions_list_html.append(f"""
+        <div class="action-card" style="background: rgba(15, 23, 42, 0.5) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; border-radius: 8px !important; padding: 12px 16px !important; margin-bottom: 8px !important;">
+            <div class="action-header" style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px !important;">
+                <span class="action-icon" style="font-size: 16px;">{details['icon']}</span>
+                <span class="action-name" style="font-size: 13px; font-weight: 600; color: #f8fafc !important;">{act}</span>
+            </div>
+            <div class="action-meta" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 8px !important;">
+                <div class="meta-item" style="display: flex; flex-direction: column;">
+                    <span class="meta-label" style="color: #94a3b8 !important; font-size: 9px; text-transform: uppercase; font-weight: 500; margin-bottom: 2px;">{t['priority']}</span>
+                    <span class="meta-val star-rating" style="color: #fbbf24 !important; font-weight: 700; font-size: 11px;">{details['impact']}</span>
+                </div>
+                <div class="meta-item" style="display: flex; flex-direction: column;">
+                    <span class="meta-label" style="color: #94a3b8 !important; font-size: 9px; text-transform: uppercase; font-weight: 500; margin-bottom: 2px;">Cost</span>
+                    <span class="meta-val" style="color: #cbd5e1 !important; font-weight: 600; font-size: 11px;">{details['cost']}</span>
+                </div>
+                <div class="meta-item" style="display: flex; flex-direction: column;">
+                    <span class="meta-label" style="color: #94a3b8 !important; font-size: 9px; text-transform: uppercase; font-weight: 500; margin-bottom: 2px;">{t['aqi_imp']}</span>
+                    <span class="meta-val" style="color: #4ade80 !important; font-weight: 700; font-size: 11px;">{details['imp']}</span>
+                </div>
+            </div>
+        </div>""")
+    actions_html = f'<div class="actions-container">{"".join(actions_list_html)}</div>'
     
     rec_html = f"""
     <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; height: 100%; display: flex; flex-direction: column; gap: 16px;">
-        <h4 style="margin: 0; color: #38bdf8; font-size: 16px; font-weight: 600; text-transform: uppercase; border-bottom: 1px solid #334155; padding-bottom: 12px;">🏛️ Municipal Decision Support</h4>
+        <h4 style="margin: 0; color: #38bdf8; font-size: 16px; font-weight: 600; text-transform: uppercase; border-bottom: 1px solid #334155; padding-bottom: 12px;">{t['mun_decision']}</h4>
         <div>
-            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">Immediate Actions</div>
+            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 12px;">{t['imm_actions']}</div>
             {actions_html}
         </div>
         <div style="border-top: 1px dashed #334155; padding-top: 12px;">
-            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 4px;">Expected Result</div>
-            <div style="font-size: 16px; font-weight: bold; color: #4ade80;">AQI Improvement: {spec['improvement']}</div>
+            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 4px;">{t['exp_result']}</div>
+            <div style="font-size: 16px; font-weight: bold; color: #4ade80;">{t['aqi_imp']}: {spec['improvement']}</div>
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px; margin-top: auto;">
-            <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Priority</div><div style="font-weight: bold; font-size: 14px; color: {spec['priority_color']};">{spec['priority']}</div></div>
-            <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Est. Citizens Impacted</div><div style="color: #f8fafc; font-weight: bold; font-size: 14px;">~{spec['citizens_impacted']:,}</div></div>
-            <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Responsible Dept</div><div style="color: #f8fafc; font-weight: bold; font-size: 11px; line-height:1.2;">{spec['dept']}</div></div>
-            <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Action Timeline</div><div style="color: #f8fafc; font-weight: bold; font-size: 14px;">{spec['timeline']}</div></div>
-            <div style="grid-column: span 2;"><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Estimated Budget</div><div style="color: #4ade80; font-weight: bold; font-size: 14px;">{spec['budget']}</div></div>
+            <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['priority']}</div><div style="font-weight: bold; font-size: 14px; color: {spec['priority_color']};">{spec['priority']}</div></div>
+            <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['citizens_impacted']}</div><div style="color: #f8fafc; font-weight: bold; font-size: 14px;">~{spec['citizens_impacted']:,}</div></div>
+            <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['resp_dept']}</div><div style="color: #f8fafc; font-weight: bold; font-size: 11px; line-height:1.2;">{spec['dept']}</div></div>
+            <div><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['timeline']}</div><div style="color: #f8fafc; font-weight: bold; font-size: 14px;">{spec['timeline']}</div></div>
+            <div style="grid-column: span 2;"><div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['budget']}</div><div style="color: #4ade80; font-weight: bold; font-size: 14px;">{spec['budget']}</div></div>
         </div>
     </div>"""
 
@@ -518,13 +817,13 @@ def make_prediction(station_name):
 
     pred_html = f"""
     <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; height: 100%;">
-        <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 14px; font-weight: 600; text-transform: uppercase;">Forecast: {next_d.strftime("%d %b %Y")}</h4>
+        <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 14px; font-weight: 600; text-transform: uppercase;">{t['forecast']}: {next_d.strftime("%d %b %Y")}</h4>
         <div style="text-align: center; margin-bottom: 24px;">
-            <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase;">Prediction</div>
+            <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase;">{t['prediction']}</div>
             <div style="font-size: 32px; font-weight: bold; color: {color}; text-shadow: 0 0 10px {color}40;">{pred_cat}</div>
-            <div style="font-size: 14px; color: #4ade80; margin-top: 4px;">Confidence: {confidence:.1f}%</div>
+            <div style="font-size: 14px; color: #4ade80; margin-top: 4px;">{t['confidence']}: {confidence:.1f}%</div>
         </div>
-        <h5 style="margin: 0 0 12px 0; color: #94a3b8; font-size: 11px; font-weight: 600; text-transform: uppercase;">Class Probabilities</h5>
+        <h5 style="margin: 0 0 12px 0; color: #94a3b8; font-size: 11px; font-weight: 600; text-transform: uppercase;">{t['class_probs']}</h5>
         {bar_chart_html}
     </div>"""
 
@@ -534,51 +833,51 @@ def make_prediction(station_name):
     
     explain_html = f"""
     <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; height: 100%;">
-        <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 14px; font-weight: 600; text-transform: uppercase;">🧠 Explainable AI</h4>
+        <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 14px; font-weight: 600; text-transform: uppercase;">🧠 {t['why_forecast']}</h4>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
             <div style="background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px;">
-                <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Yesterday</div>
+                <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['yesterday']}</div>
                 <div style="font-size: 18px; font-weight: bold; color: {AQI_COLORS.get(yest_aqi_val, 'white')};">{yest_aqi_val}</div>
             </div>
             <div style="background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px;">
-                <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Today</div>
+                <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">{t['today']}</div>
                 <div style="font-size: 18px; font-weight: bold; color: {current_col};">{current_aqi}</div>
             </div>
         </div>
-        <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">Why this forecast?</div>
+        <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">{t['why_forecast']}</div>
         <div style="font-size:13px; color:#cbd5e1; display:flex; flex-direction:column; gap:8px;">
-            <div style="display:flex; justify-content:space-between;"><span>PM2.5 Trend</span> <span style="color:{pm25_color}">{pm25_dir} {abs(pm25_diff):.1f}</span></div>
-            <div style="display:flex; justify-content:space-between;"><span>Primary Driver</span> <span style="color:#ef4444">{spec['drivers'][0]}</span></div>
-            <div style="display:flex; justify-content:space-between;"><span>Secondary Driver</span> <span style="color:#fbbf24">{spec['drivers'][1]}</span></div>
-            <div style="display:flex; justify-content:space-between;"><span>Background Factor</span> <span style="color:#38bdf8">{spec['drivers'][2]}</span></div>
+            <div style="display:flex; justify-content:space-between; color:#cbd5e1 !important;"><span>{t['pm25_trend']}</span> <span style="color:{pm25_color} !important; font-weight:600;">{pm25_dir} {abs(pm25_diff):.1f}</span></div>
+            <div style="display:flex; justify-content:space-between; color:#cbd5e1 !important;"><span>{t['primary_driver']}</span> <span style="color:#ef4444 !important; font-weight:600;">{spec['drivers'][0]}</span></div>
+            <div style="display:flex; justify-content:space-between; color:#cbd5e1 !important;"><span>{t['secondary_driver']}</span> <span style="color:#fbbf24 !important; font-weight:600;">{spec['drivers'][1]}</span></div>
+            <div style="display:flex; justify-content:space-between; color:#cbd5e1 !important;"><span>{t['background_factor']}</span> <span style="color:#38bdf8 !important; font-weight:600;">{spec['drivers'][2]}</span></div>
         </div>
     </div>"""
 
     kpi_html = f"""
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px;">
-        <div style="background: linear-gradient(135deg, rgba(30,41,59,0.8), rgba(15,23,42,0.9)); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">🌿 Current AQI</div>
-            <div style="font-size: 26px; font-weight: bold; color: {current_col};">{current_aqi}</div>
+    <div class="kpi-grid">
+        <div class="kpi-card" style="animation-delay: 0.05s;">
+            <div class="kpi-label">{t['kpi_current_aqi']}</div>
+            <div class="kpi-val" style="color: {current_col};">{current_aqi}</div>
         </div>
-        <div style="background: linear-gradient(135deg, rgba(30,41,59,0.8), rgba(15,23,42,0.9)); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">🌫️ Latest PM2.5</div>
-            <div style="font-size: 26px; font-weight: bold; color: #f8fafc;">{latest_pm25:.1f} <span style="font-size: 12px; color: #64748b;">µg/m³</span></div>
+        <div class="kpi-card" style="animation-delay: 0.1s;">
+            <div class="kpi-label">{t['kpi_latest_pm']}</div>
+            <div class="kpi-val" style="color: #f8fafc;">{latest_pm25:.1f} <span style="font-size: 12px; color: #64748b;">µg/m³</span></div>
         </div>
-        <div style="background: linear-gradient(135deg, rgba(30,41,59,0.8), rgba(15,23,42,0.9)); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">📈 Forecast</div>
-            <div style="font-size: 26px; font-weight: bold; color: {color};">{pred_cat}</div>
+        <div class="kpi-card" style="animation-delay: 0.15s;">
+            <div class="kpi-label">{t['kpi_forecast']}</div>
+            <div class="kpi-val" style="color: {color};">{pred_cat}</div>
         </div>
-        <div style="background: linear-gradient(135deg, rgba(30,41,59,0.8), rgba(15,23,42,0.9)); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">📉 Est. AQI Reduction</div>
-            <div style="font-size: 26px; font-weight: bold; color: #4ade80;">{spec['improvement']}</div>
+        <div class="kpi-card" style="animation-delay: 0.2s;">
+            <div class="kpi-label">{t['kpi_aqi_reduction']}</div>
+            <div class="kpi-val" style="color: #4ade80;">{spec['improvement']}</div>
         </div>
-        <div style="background: linear-gradient(135deg, rgba(30,41,59,0.8), rgba(15,23,42,0.9)); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">📊 Prediction Confidence</div>
-            <div style="font-size: 26px; font-weight: bold; color: #38bdf8;">{confidence:.1f}%</div>
+        <div class="kpi-card" style="animation-delay: 0.25s;">
+            <div class="kpi-label">{t['kpi_confidence']}</div>
+            <div class="kpi-val" style="color: #38bdf8;">{confidence:.1f}%</div>
         </div>
-        <div style="background: linear-gradient(135deg, rgba(30,41,59,0.8), rgba(15,23,42,0.9)); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">🚨 Hotspot Zones</div>
-            <div style="font-size: 26px; font-weight: bold; color: #ef4444;">2 <span style="font-size: 12px; color: #64748b;">Active</span></div>
+        <div class="kpi-card" style="animation-delay: 0.3s;">
+            <div class="kpi-label">{t['kpi_hotspots']}</div>
+            <div class="kpi-val" style="color: #ef4444;">2 <span style="font-size: 12px; color: #64748b;">{t['active']}</span></div>
         </div>
     </div>
     """
@@ -649,6 +948,17 @@ button.selected, button[aria-selected="true"] {
 """
 
 with gr.Blocks(title="AirGuard AI", css=custom_css, theme=gr.themes.Base()) as demo:
+    # Language Selector / ಭಾಷೆ ಆಯ್ಕೆ / भाषा चयन
+    with gr.Row():
+        gr.Markdown("") # Spacing
+        lang_selector = gr.Radio(
+            choices=["English", "ಕನ್ನಡ", "हिंदी"],
+            value="English",
+            label="Language / ಭಾಷೆ / भाषा",
+            interactive=True
+        )
+        gr.Markdown("") # Spacing
+
     
     gr.HTML("""
     <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #1E293B; margin-bottom: 20px;">
@@ -736,7 +1046,7 @@ with gr.Blocks(title="AirGuard AI", css=custom_css, theme=gr.themes.Base()) as d
                     report_status = gr.HTML("<div style='height:50px;'></div>")
                 
                 with gr.Column(scale=2, elem_classes="dark-card"):
-                    gr.HTML("""
+                    citizen_analytics_box = gr.HTML("""
                     <h3 style='color: white; margin: 0 0 16px 0; font-weight: bold;'>Today's Citizen Analytics</h3>
                     <div style='display:flex; gap:20px; flex-wrap:wrap;'>
                         <div style='background:#0f172a; padding:20px; border-radius:12px; flex:1; text-align:center; border: 1px solid #334155;'><h2 style='margin:0; color:#ef4444; font-size: 32px;'>12</h2><div style='color:#94a3b8; font-size:12px; margin-top:4px;'>Garbage Burning</div></div>
@@ -821,14 +1131,15 @@ with gr.Blocks(title="AirGuard AI", css=custom_css, theme=gr.themes.Base()) as d
     """)
 
     # Helper function for forecast tab prediction
-    def make_forecast_prediction(station_name):
+    def make_forecast_prediction(station_name, lang="English"):
+        t = DYNAMIC_TRANSLATIONS.get(lang, DYNAMIC_TRANSLATIONS["English"])
         trend_fig = plot_trend(station_name)
         wrow = ward_df[ward_df['station'] == station_name]
-        if wrow.empty: return trend_fig, go.Figure(), "<p>Station not found.</p>"
+        if wrow.empty: return trend_fig, go.Figure(), f"<p>{t['not_found']}</p>"
         ward_name = wrow.iloc[0]['ward_name']
         station_history = ts_daily[ts_daily['station'] == station_name].copy()
         max_date = station_history['date'].max() if len(station_history) > 0 else pd.NaT
-        if pd.isna(max_date): return trend_fig, go.Figure(), "<p>No data available.</p>"
+        if pd.isna(max_date): return trend_fig, go.Figure(), f"<p>{t['no_data']}</p>"
         
         today = max_date
         latest_pm25 = station_history.sort_values('date').iloc[-1]['pm25']
@@ -849,36 +1160,36 @@ with gr.Blocks(title="AirGuard AI", css=custom_css, theme=gr.themes.Base()) as d
         
         pred_html = f"""
         <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; height: 100%;">
-            <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 14px; font-weight: 600; text-transform: uppercase;">Forecast: {next_d.strftime("%d %b %Y")}</h4>
+            <h4 style="margin: 0 0 16px 0; color: #38bdf8; font-size: 14px; font-weight: 600; text-transform: uppercase;">{t['forecast']}: {next_d.strftime("%d %b %Y")}</h4>
             <div style="text-align: center; margin-bottom: 24px;">
-                <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase;">Prediction</div>
+                <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase;">{t['prediction']}</div>
                 <div style="font-size: 32px; font-weight: bold; color: {color}; text-shadow: 0 0 10px {color}40;">{pred_cat}</div>
-                <div style="font-size: 14px; color: #4ade80; margin-top: 4px;">Confidence: {confidence:.1f}%</div>
+                <div style="font-size: 14px; color: #4ade80; margin-top: 4px;">{t['confidence']}: {confidence:.1f}%</div>
             </div>
-            <h5 style="margin: 0 0 12px 0; color: #94a3b8; font-size: 11px; font-weight: 600; text-transform: uppercase;">Class Probabilities</h5>
+            <h5 style="margin: 0 0 12px 0; color: #94a3b8; font-size: 11px; font-weight: 600; text-transform: uppercase;">{t['class_probs']}</h5>
             {bar_chart_html}
         </div>"""
         return trend_fig, gauge_fig, pred_html
 
     # Events for Dashboard tab
     run_btn.click(fn=lambda: gr.update(value="Analyzing...", interactive=False), outputs=[run_btn]).then(
-        fn=make_prediction, inputs=station_dd,
+        fn=make_prediction, inputs=[station_dd, lang_selector],
         outputs=[trend_plot, gauge_plot, pred_html_out, rec_html_out, alert_html_out, kpi_html_out, explain_html_out]
     ).then(fn=lambda: gr.update(value="Analyze Data", interactive=True), outputs=[run_btn])
     
     station_dd.change(fn=lambda: gr.update(value="Analyzing...", interactive=False), outputs=[run_btn]).then(
-        fn=make_prediction, inputs=station_dd,
+        fn=make_prediction, inputs=[station_dd, lang_selector],
         outputs=[trend_plot, gauge_plot, pred_html_out, rec_html_out, alert_html_out, kpi_html_out, explain_html_out]
     ).then(fn=lambda: gr.update(value="Analyze Data", interactive=True), outputs=[run_btn])
     
     # Events for Forecast tab
     forecast_run_btn.click(fn=lambda: gr.update(value="Fetching...", interactive=False), outputs=[forecast_run_btn]).then(
-        fn=make_forecast_prediction, inputs=forecast_station_dd,
+        fn=make_forecast_prediction, inputs=[forecast_station_dd, lang_selector],
         outputs=[forecast_trend_plot, forecast_gauge_plot, forecast_pred_html_out]
     ).then(fn=lambda: gr.update(value="Fetch Forecast", interactive=True), outputs=[forecast_run_btn])
     
     forecast_station_dd.change(fn=lambda: gr.update(value="Fetching...", interactive=False), outputs=[forecast_run_btn]).then(
-        fn=make_forecast_prediction, inputs=forecast_station_dd,
+        fn=make_forecast_prediction, inputs=[forecast_station_dd, lang_selector],
         outputs=[forecast_trend_plot, forecast_gauge_plot, forecast_pred_html_out]
     ).then(fn=lambda: gr.update(value="Fetch Forecast", interactive=True), outputs=[forecast_run_btn])
 
@@ -888,10 +1199,32 @@ with gr.Blocks(title="AirGuard AI", css=custom_css, theme=gr.themes.Base()) as d
     ).then(fn=lambda: gr.update(value="Submit Report", interactive=True), outputs=[submit_btn])
     
     # Trigger initial load prediction
-    demo.load(fn=make_prediction, inputs=station_dd,
+    demo.load(fn=make_prediction, inputs=[station_dd, lang_selector],
               outputs=[trend_plot, gauge_plot, pred_html_out, rec_html_out, alert_html_out, kpi_html_out, explain_html_out])
-    demo.load(fn=make_forecast_prediction, inputs=forecast_station_dd,
+    demo.load(fn=make_forecast_prediction, inputs=[forecast_station_dd, lang_selector],
               outputs=[forecast_trend_plot, forecast_gauge_plot, forecast_pred_html_out])
+
+
+    # Language change handler
+    lang_selector.change(
+        fn=change_language,
+        inputs=[lang_selector],
+        outputs=[
+            top_bar, hero_section, exec_summary, 
+            station_dd, run_btn, 
+            forecast_station_dd, forecast_run_btn,
+            report_station, incident_type, img_upload, submit_btn,
+            citizen_analytics_box
+        ]
+    ).then(
+        fn=make_prediction,
+        inputs=[station_dd, lang_selector],
+        outputs=[trend_plot, gauge_plot, pred_html_out, rec_html_out, alert_html_out, kpi_html_out, explain_html_out]
+    ).then(
+        fn=make_forecast_prediction,
+        inputs=[forecast_station_dd, lang_selector],
+        outputs=[forecast_trend_plot, forecast_gauge_plot, forecast_pred_html_out]
+    )
 
 if __name__ == '__main__':
     demo.launch(server_name='0.0.0.0', server_port=7860, share=False, show_error=True)
